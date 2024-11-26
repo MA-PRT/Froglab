@@ -5,8 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :tickets
-  has_many :actions, through: :tickets
-  has_many :comments, through: :tickets
-  has_many :teams, through: :team_members
+  has_many :managed_tickets, class_name: 'Ticket', foreign_key: 'manager_id'
+  has_many :team_memberships, class_name: 'TeamMember'
+  has_many :teams, through: :team_memberships
   has_many :communications
+  has_many :comments
+  has_many :actions
 end
