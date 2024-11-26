@@ -10,9 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_26_095552) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_26_113248) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "actions", force: :cascade do |t|
+    t.string "title"
+    t.date "due_date"
+    t.integer "status"
+    t.text "content"
+    t.bigint "user_id", null: false
+    t.bigint "ticket_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ticket_id"], name: "index_actions_on_ticket_id"
+    t.index ["user_id"], name: "index_actions_on_user_id"
+  end
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -42,6 +55,68 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_26_095552) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id", null: false
+    t.bigint "ticket_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ticket_id"], name: "index_comments_on_ticket_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "communications", force: :cascade do |t|
+    t.string "title"
+    t.string "category"
+    t.text "content"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_communications_on_user_id"
+  end
+
+  create_table "team_communications", force: :cascade do |t|
+    t.bigint "communication_id", null: false
+    t.bigint "team_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["communication_id"], name: "index_team_communications_on_communication_id"
+    t.index ["team_id"], name: "index_team_communications_on_team_id"
+  end
+
+  create_table "team_members", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "team_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_team_members_on_team_id"
+    t.index ["user_id"], name: "index_team_members_on_user_id"
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "parent_team_id"
+    t.index ["parent_team_id"], name: "index_teams_on_parent_team_id"
+  end
+
+  create_table "tickets", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.integer "priority"
+    t.string "category"
+    t.integer "status"
+    t.bigint "user_id", null: false
+    t.bigint "team_id", null: false
+    t.bigint "manager_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["manager_id"], name: "index_tickets_on_manager_id"
+    t.index ["team_id"], name: "index_tickets_on_team_id"
+    t.index ["user_id"], name: "index_tickets_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -50,10 +125,26 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_26_095552) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "role"
+    t.string "first_name"
+    t.string "last_name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "actions", "tickets"
+  add_foreign_key "actions", "users"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comments", "tickets"
+  add_foreign_key "comments", "users"
+  add_foreign_key "communications", "users"
+  add_foreign_key "team_communications", "communications"
+  add_foreign_key "team_communications", "teams"
+  add_foreign_key "team_members", "teams"
+  add_foreign_key "team_members", "users"
+  add_foreign_key "teams", "teams", column: "parent_team_id"
+  add_foreign_key "tickets", "teams"
+  add_foreign_key "tickets", "users"
+  add_foreign_key "tickets", "users", column: "manager_id"
 end
