@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_26_113248) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_26_162846) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -106,7 +106,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_26_113248) do
     t.text "content"
     t.integer "priority"
     t.string "category"
-    t.integer "status"
+    t.integer "status", default: 0
     t.bigint "user_id", null: false
     t.bigint "team_id", null: false
     t.bigint "manager_id"

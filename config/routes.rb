@@ -21,4 +21,6 @@ Rails.application.routes.draw do
 
   resources :actions, only: [ :index, :edit, :update, :destroy ]
 
+  get "/home", to: "pages#home", as: 'home'
+
 end
