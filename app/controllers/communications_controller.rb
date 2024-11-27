@@ -7,6 +7,7 @@ class CommunicationsController < ApplicationController
   end
 
   def show
+    @communication = Communication.find(params[:id])
   end
 
   def new
