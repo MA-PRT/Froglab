@@ -1,0 +1,69 @@
+<div class="container">
+  <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+  <%# d-lg-none top-tabs fixed-top bg-gray border-top %>
+    <li class="nav-item d-flex justify-content-around" role="presentation">
+      <button class="btn nav-link communication-tab" id="communications-tab" data-bs-toggle="tab" data-bs-target="#communications-tab-pane" type="button" role="tab" aria-controls="communications-tab-pane" aria-selected="true">Communications</button>
+    </li>
+    <li class="nav-item d-flex justify-content-around" role="presentation">
+      <button class="btn nav-link active ticket-tab" id="tickets-tab" data-bs-toggle="tab" data-bs-target="#tickets-tab-pane" type="button" role="tab" aria-controls="tickets-tab-pane" aria-selected="true">Tickets</button>
+    </li>
+    <li class="nav-item d-flex justify-content-around" role="presentation">
+      <button class="btn nav-link action-tab" id="Actions-tab" data-bs-toggle="tab" data-bs-target="#actions-tab-pane" type="button" role="tab" aria-controls="Actions-tab-pane" aria-selected="true">Actions</button>
+    </li>
+  </ul>
+</div>
+<!-- Content -->
+
+<div class="tab-content position-sticky" id="myTabContent">
+
+
+  <div class="tab-pane fade" id="communications-tab-pane" role="tabpanel" aria-labelledby="communications-tab" tabindex="0">
+    <div class="container justify-content-center">
+      <% @communications.each do |communication| %>
+          <div class="d-flex justify-content-between card-product-infos m-2 rounded-4 border-2">
+            <%# <%= cl_image_tag booking.rocket.photos.first.key%>
+            <div class="card-product-infos">
+              <h2 class=""><%= communication.title %></h2>
+              <p class=""><%= communication.category %></p>
+              <p class=""><%= communication.content %></p>
+            </div>
+          </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="tab-pane fade show active" id="tickets-tab-pane" role="tabpanel" aria-labelledby="tickets-tab" tabindex="1">
+    <div class="container justify-content-center">
+      <% @tickets.each do |ticket| %>
+          <div class="d-flex justify-content-between card-product m-2 rounded-4 border-2">
+            <%# <%= cl_image_tag booking.rocket.photos.first.key%>
+            <div class="card-product-infos">
+              <h2 class=""><%= ticket.title %></h2>
+              <p class=""><%= ticket.category %></p>
+              <p class=""><%= ticket.status %></p>
+              <p class=""><%= ticket.content %></p>
+            </div>
+          </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="tab-pane fade" id="actions-tab-pane" role="tabpanel" aria-labelledby="actions-tab" tabindex="2">
+    <div class="container justify-content-center">
+      <% @tickets.each do |ticket| %>
+        <% ticket.actions.each do |action| %>
+          <div class="d-flex justify-content-between card-product m-2 rounded-4 border-2">
+            <%# <%= cl_image_tag booking.rocket.photos.first.key%>
+            <div class="card-product-infos">
+              <h2 class=""><%= action.title %></h2>
+              <p class=""><%= action.due_date %></p>
+              <p class=""><%= action.status %></p>
+              <p class=""><%= action.user_id%></p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+</div>
