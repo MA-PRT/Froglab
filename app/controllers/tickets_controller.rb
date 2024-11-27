@@ -4,6 +4,8 @@ class TicketsController < ApplicationController
 
   def index
     @tickets = Ticket.all
+    @communications = Communication.all
+    @actions = Action.all
   end
 
   def show
