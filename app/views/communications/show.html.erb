@@ -1,0 +1,15 @@
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="true" data-bs-keyboard="true" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-1" id="staticBackdropLabel"><%= @communication.title %></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+            <div class="modal-body">
+              <p class="fs-4"><%= @communication.category %></p>
+              <p class="text-start"><%= @communication.content %></p>
+            </div>
+      </div>
+    </div>
+  </div>

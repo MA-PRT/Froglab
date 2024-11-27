@@ -1,0 +1,52 @@
+<div class="container">
+  <%# Ticket pictures carrousel %>
+
+  <div id="carouselTicketShowPicture" class="carousel slide">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+      <%# Add here the link for the picture - cloudinary ? %>
+        <img src="https://as1.ftcdn.net/v2/jpg/03/58/09/32/1000_F_358093207_w3rP8qhYrl1eiszWetCbALwT4yuH8T1v.jpg" class="d-block w-100" alt="">
+      </div>
+      <div class="carousel-item">
+      <%# Add here the link for the picture - cloudinary ? %>
+        <img src="https://as1.ftcdn.net/v2/jpg/02/20/27/24/1000_F_220272450_it8jPKW7arroUdBXfv2sC8kY9LZmTRm2.jpg" class="d-block w-100" alt="">
+      </div>
+      <div class="carousel-item">
+      <%# Add here the link for the picture - cloudinary ? %>
+        <img src="https://www.freepik.com/free-photos-vectors/coding-wallpaper-vertical" class="d-block w-100" alt="">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <%# Ticket infiormations %>
+
+  <%# title & category %>
+  <div class="d-flex ">
+    <h1><%= @ticket.title %></h1>
+    <p><strong>Category:</strong> <%= @ticket.category %></p>
+  </div>
+
+
+  <p><strong>Content:</strong> <%= @ticket.content %></p>
+  <p><strong>Priority:</strong> <%= @ticket.priority %></p>
+
+  <p><strong>Status:</strong> <%= @ticket.status %></p>
+  <p><strong>Created At:</strong> <%= @ticket.created_at %></p>
+  <p><strong>Updated At:</strong> <%= @ticket.updated_at %></p>
+
+  <p><strong>User:</strong> <%= @ticket.user.first_name %> <%= @ticket.user.last_name %></p>
+
+</div>
