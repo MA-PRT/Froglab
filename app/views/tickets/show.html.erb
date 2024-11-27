@@ -39,7 +39,7 @@
   </div>
 
   <%# Priority progress bar%>
-  <div class="mt-2 mb-2">
+  <div class="mt-2 mb-3">
     <%# Color of priority text %>
     <div>
       <p>Priority:
@@ -48,23 +48,25 @@
         </span>
       </p>
     </div>
-  </div>
 
-  <%# Color of progress bar %>
-  <div class="progress"
-        role="progressbar"
-        aria-label="Basic example"
-        aria-valuenow="<%= progress_bar(@ticket.priority)[:number] %>"
-        aria-valuemin="0"
-        aria-valuemax="100">
-    <div class="progress-bar"
-        style="width: <%= progress_bar(@ticket.priority)[:number] %>%;
-        background-color: <%= progress_bar(@ticket.priority)[:color] %>">
+    <%# Color of progress bar %>
+    <div class="progress"
+          role="progressbar"
+          aria-label="Basic example"
+          aria-valuenow="<%= progress_bar(@ticket.priority)[:number] %>"
+          aria-valuemin="0"
+          aria-valuemax="100">
+      <div class="progress-bar"
+          style="width: <%= progress_bar(@ticket.priority)[:number] %>%;
+          background-color: <%= progress_bar(@ticket.priority)[:color] %>">
+      </div>
     </div>
   </div>
 
   <%# Status %>
-  <p><strong>Status:</strong> <%= @ticket.status.capitalize %></p>
+  <div class="mt-2 mb-2">
+    <p><strong>Status:</strong> <%= @ticket.status.capitalize %></p>
+  </div>
 
   <%# Creation date / Update date %>
   <div>
