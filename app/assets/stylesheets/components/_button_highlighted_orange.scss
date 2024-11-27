@@ -1,0 +1,33 @@
+.orange-highlighted-button {
+
+  background-color: $orange;
+  color: $orange;
+  border: none;
+  border-radius: 4px; // Ajustez selon vos besoins
+  padding: 10px 20px; // Ajustez selon vos besoins
+  font-size: 16px; // Ajustez selon vos besoins
+  font-weight: bold;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; // Espace entre le texte et le logo
+  cursor: pointer;
+  box-shadow: 0px 4px 6px rgba($orange, 0.5); // Ombre orange avec transparence
+
+  // Transitions pour un effet smooth
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+
+  // Effet hover
+  &:hover {
+    background-color: darken($orange, 10%);
+    box-shadow: 0px 6px 8px rgba($orange, 0.7);
+  }
+
+  // Logo à l'intérieur du bouton
+  png {
+    fill: $orange; // Remplit le logo en orange
+    width: 20px; // Ajustez selon vos besoins
+    height: 20px; // Ajustez selon vos besoins
+  }
+}

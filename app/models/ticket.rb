@@ -7,5 +7,6 @@ class Ticket < ApplicationRecord
   belongs_to :manager, class_name: "User", optional: true
   has_many :actions, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many_attached :photos
 
 end
