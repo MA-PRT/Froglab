@@ -14,13 +14,13 @@ class TicketsController < ApplicationController
 
   def new
     @ticket = Ticket.new
-    @teams = current_user.teams
-    @ticket.team = @teams.first if @teams.count == 1
   end
 
   def create
     @ticket = Ticket.new(ticket_params)
     @ticket.user = current_user
+    @teams = current_user.teams
+    @ticket.team = @teams.first if @teams.count == 1
     if @ticket.save
       redirect_to ticket_path(@ticket)
     else
