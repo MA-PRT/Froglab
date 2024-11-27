@@ -16,6 +16,7 @@ class TicketsController < ApplicationController
   def create
     @ticket = Ticket.new(params_ticket)
     @ticket.user = current_user
+    @ticket.team =
     if @ticket.save
       redirect_to ticket_path(@ticket)
     else
@@ -31,7 +32,7 @@ class TicketsController < ApplicationController
   private
 
   def params_ticket
-    params.require(:ticket).permit(:title, :content, :priority, photos: [])
+    params.require(:ticket).permit(:title, :content, :priority, :user, :team, photos: [])
   end
 
   def set_ticket
