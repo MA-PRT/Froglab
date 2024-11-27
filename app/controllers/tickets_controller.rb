@@ -7,6 +7,7 @@ class TicketsController < ApplicationController
   end
 
   def show
+    
   end
 
   def new
@@ -16,7 +17,7 @@ class TicketsController < ApplicationController
   def create
     @ticket = Ticket.new(params_ticket)
     @ticket.user = current_user
-    @ticket.team = 
+    @ticket.team =
     if @ticket.save
       redirect_to ticket_path(@ticket)
     else
