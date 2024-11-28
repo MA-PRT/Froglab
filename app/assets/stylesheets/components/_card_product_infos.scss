@@ -46,7 +46,6 @@ h1, h2, h3, h4, h5, h6 {
   overflow: hidden;             /* Masque le texte dépassant */
   text-overflow: ellipsis;      /* Ajoute "..." pour le texte tronqué */
   line-height: 1.2;             /* Ajuste l'espacement des lignes si nécessaire */
-  max-height: calc(1.2em * 2);
   text-decoration: none;
 }
 
