@@ -22,15 +22,16 @@
 </div>
 
 
-<div class="container justify-content-center mt-3">
-  <% @communications.each do |communication| %>
+<div class="container mt-3">
+  <div class="row justify-content-center">
+      <% @communications.each do |communication| %>
       <div class="d-flex justify-content-between m-1 rounded-4 border-2">
         <%# <%= cl_image_tag booking.rocket.photos.first.key%>
         <div class="card-product-infos">
-          <h2><%= communication.title %></h2>
-          <p><%= communication.category %></p>
+          <h2><strong><%= communication.category %></strong>: <%= communication.title %></h2>
           <p><%= communication.content %></p>
         </div>
       </div>
   <% end %>
+  </div>
 </div>
