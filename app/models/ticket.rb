@@ -8,5 +8,4 @@ class Ticket < ApplicationRecord
   has_many :actions, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many_attached :photos
-
 end
