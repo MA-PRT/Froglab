@@ -4,6 +4,10 @@
   }
 }
 
+#photos-buttons {
+  width: 100%;
+}
+
 .new-form {
   color: black;
   background-color: white;
@@ -11,5 +15,25 @@
   .form-control {
     background-color: white;
     color: gray;
+  }
+}
+
+#camera-container {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.responsive-video,
+.responsive-canvas,
+.responsive-img {
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 767px) {
+  #camera-container {
+    width: 100%;
   }
 }

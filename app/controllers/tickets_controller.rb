@@ -37,10 +37,12 @@ class TicketsController < ApplicationController
   private
 
   def ticket_params
-    params.require(:ticket).permit(:title, :content, :priority, :category, :team_id, photos: [])
+    params.require(:ticket).permit(:title, :content, :priority, :category, :team_id, :photo)
   end
 
   def set_ticket
     @ticket = Ticket.find(params[:id])
   end
+
+
 end
