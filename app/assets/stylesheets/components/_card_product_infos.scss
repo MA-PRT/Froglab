@@ -6,49 +6,88 @@ h1, h2, h3, h4, h5, h6 {
   font-family: $headers-font; // Applique "Montserrat" pour les titres
 }
 
-.card-product-infos {
+.container-index {
+  padding: 0; /* Supprime les marges internes */
+  padding-bottom: 100px; /* Ajustez la valeur en fonction de la hauteur de la navbar */
+}
+
+.container-index .d-flex-ticket {
+  padding: 10px; /* Ajuste l'espace interne des cartes */
+  margin-bottom: 15px;
   background-color: $white;
-  border-color: $orange;
-  border-radius: 5px;
-  color: $black;
-  padding: 5px;
-  width: 100%;
-  // height: 115px;
-  cursor: pointer; /* Change le curseur pour indiquer que c'est cliquable */
-  transition: transform 0.2s; /* Animation de hover */
 }
 
-.card-product-infos h2 {
-  margin: 5px 0; /* Réduit la marge verticale */
-  padding: 0; /* Supprime le padding */
-  border-bottom: 2px solid $orange; /* Bordure orange */
-  padding-bottom: 5px;
-  margin-bottom: 10px;
-}
-
-.card-product-infos p {
-  margin: 3px 0; /* Réduit la marge entre les paragraphes */
-  overflow: hidden; //empêche le texte de déborder en dehors de la carte
-  text-overflow: ellipsis; //Ajoute des "..." à la fin du texte coupé.
-}
-
-.container {
-  margin: 1px; /* Supprime les marges externes */
-  padding: 0;
-  margin: auto; /* Supprime les marges internes */
-  padding-bottom: 50px;
-}
-
-.container .d-flex {
-  margin: 5px; /* Réduit l'espace entre les cartes */
-  padding: 0px; /* Ajuste l'espace interne des cartes */
-}
-
-.d-flex {
+.d-flex-ticket {
   border: 2px solid $orange; /* Épaisseur et couleur de la bordure */
   border-radius: 8px; /* Ajoute des coins arrondis */
   padding: 10px; /* Espacement interne */
   margin: 5px 0; /* Espacement entre les cartes */
+  width: 100%;
+}
+
+.h-160 {
+  height: 160px;
+}
+
+.card-product-infos {
+  border-color: $orange;
+  border-radius: 5px;
+  color: $black;
+  width: 100%;
+}
+
+.card-product-infos h2 {
+  padding: 0; /* Supprime le padding */
+  border-bottom: 2px solid $orange; /* Bordure orange */
+  padding-bottom: 5px;
+  display: -webkit-box;         /* Active le mode boîte flexible */
+  -webkit-line-clamp: 2;        /* Limite à 2 lignes */
+  -webkit-box-orient: vertical; /* Définit l'orientation verticale */
+  overflow: hidden;             /* Masque le texte dépassant */
+  text-overflow: ellipsis;      /* Ajoute "..." pour le texte tronqué */
+  line-height: 1.2;             /* Ajuste l'espacement des lignes si nécessaire */
+  max-height: calc(1.2em * 2);
+  text-decoration: none;
+}
+
+.card-product-infos p {
+  margin: 3px;
+  display: -webkit-box;       /* Active le comportement en boîte flexible */
+  -webkit-line-clamp: 2;      /* Nombre maximum de lignes visibles */
+  -webkit-box-orient: vertical; /* Définit l'orientation de la boîte */
+  overflow: hidden;           /* Masque le texte qui dépasse */
+  text-overflow: ellipsis;
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+// .container {
+//   margin: 1px; /* Supprime les marges externes */
+//   padding: 0;
+//   margin: auto; /* Supprime les marges internes */
+//   padding-bottom: 50px;
+// }
+
+// .container .d-flex {
+//   margin: 5px; /* Réduit l'espace entre les cartes */
+//   padding: 0px; /* Ajuste l'espace interne des cartes */
+// }
+
+// .d-flex {
+//   border: 2px solid $orange; /* Épaisseur et couleur de la bordure */
+//   border-radius: 8px; /* Ajoute des coins arrondis */
+//   padding: 10px; /* Espacement interne */
+//   margin: 5px 0; /* Espacement entre les cartes */
+// }
+
+.btn-link {
+  all: unset; /* Supprime tous les styles par défaut */
+  display: block; /* Assure que le lien agit comme un bloc */
+  text-decoration: none; /* Supprime les soulignements éventuels */
+  color: $white; /* Hérite de la couleur parent */
 }
 
 .card-product_infos:hover {

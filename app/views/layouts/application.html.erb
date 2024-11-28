@@ -11,13 +11,13 @@
   </head>
 
   <body>
-    <% unless current_page?(home_path) %>
-      <%# <%= render "shared/navbar" %>
-    <% end %>
-    <%= render "shared/flashes" %>
 
-    <div class="container">
+    <% if controller_name == "tickets" && action_name == "show" %>
       <%= yield %>
-    </div>
+    <% else %>
+      <div class="container">
+        <%= yield %>
+      </div>
+    <% end %>
   </body>
 </html>
