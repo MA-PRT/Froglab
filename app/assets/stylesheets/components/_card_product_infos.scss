@@ -1,3 +1,11 @@
+body {
+  font-family: $body-font; // Applique "Prompt" pour le texte principal
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $headers-font; // Applique "Montserrat" pour les titres
+}
+
 .card-product-infos {
   background-color: $white;
   border-color: $orange;
@@ -5,14 +13,9 @@
   color: $black;
   padding: 5px;
   width: 100%;
-}
-
-body {
-  font-family: $body-font; // Applique "Prompt" pour le texte principal
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: $headers-font; // Applique "Montserrat" pour les titres
+  height: 115px;
+  cursor: pointer; /* Change le curseur pour indiquer que c'est cliquable */
+  transition: transform 0.2s; /* Animation de hover */
 }
 
 .card-product-infos h2 {
@@ -25,11 +28,15 @@ h1, h2, h3, h4, h5, h6 {
 
 .card-product-infos p {
   margin: 3px 0; /* Réduit la marge entre les paragraphes */
+  overflow: hidden; //empêche le texte de déborder en dehors de la carte
+  text-overflow: ellipsis; //Ajoute des "..." à la fin du texte coupé.
 }
 
 .container {
   margin: 1px; /* Supprime les marges externes */
-  padding: 0; /* Supprime les marges internes */
+  padding: 0;
+  margin: auto; /* Supprime les marges internes */
+  padding-bottom: 50px;
 }
 
 .container .d-flex {
@@ -42,4 +49,9 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 8px; /* Ajoute des coins arrondis */
   padding: 10px; /* Espacement interne */
   margin: 5px 0; /* Espacement entre les cartes */
+}
+
+.card-product_infos:hover {
+  transform: scale(1.02); /* Légère mise en avant au survol */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ajout d'une ombre */
 }
