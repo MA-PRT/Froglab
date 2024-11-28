@@ -53,7 +53,7 @@
                       <% end %>
                     </div>
                     <strong><p>Priority:
-                      <span style="color: <%= progress_bar(ticket.priority)[:color] %>">
+                      <span style="color: <%= progress_point(ticket.priority)[:color] %>">
                       <%= ticket.priority.humanize %>
                       </span>
                     </p></strong>
