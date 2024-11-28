@@ -1,0 +1,36 @@
+.card-show-ticket {
+  background-color: $white;
+  color: $gray;
+  margin-top: 3em;
+}
+
+.ticket-show-h-font {
+  font-family: $body-font;
+}
+
+.ticket-show-p-font {
+  font-family: $headers-font;
+}
+
+.card-tkt-show-ongoing {
+  background-color: #FA812F;
+  color: $white; /* Utilisation directe du code couleur */
+  font-weight: bold;
+  padding: 0.3em 1em; /* Augmente la largeur horizontale */
+  margin: 0.2em;
+  text-align: center;
+  display: inline-block;
+  white-space: nowrap; /* Assure que le texte reste sur une seule ligne */
+}
+
+.card-tkt-show-solved {
+  background-color: #6EC207;
+  font-weight: bold;
+  color: $white;
+  padding: 0.3em 1em; /* Même logique pour garder une taille homogène */
+  margin: 0.2em;
+  text-align: center;
+  display: inline-block;
+  white-space: nowrap;
+}
+
