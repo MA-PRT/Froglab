@@ -1,0 +1,5 @@
+.btn-align { display: flex;
+  flex-direction: column; /* Pour aligner le SVG et le paragraphe verticalement */
+  align-items: center;    /* Centrage horizontal */
+  justify-content: center; /* Centrage vertical */
+}

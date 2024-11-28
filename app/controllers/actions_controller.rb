@@ -5,6 +5,7 @@ class ActionsController < ApplicationController
 
   def index
     @actions = Action.all
+    @tickets = Ticket.all
   end
 
   def show
