@@ -1,3 +1,11 @@
+body {
+  font-family: $body-font; // Applique "Prompt" pour le texte principal
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $headers-font; // Applique "Montserrat" pour les titres
+}
+
 .container-index {
   padding: 0; /* Supprime les marges internes */
   padding-bottom: 100px; /* Ajustez la valeur en fonction de la hauteur de la navbar */
@@ -17,13 +25,17 @@
   width: 100%;
 }
 
+.h-160 {
+  height: 160px;
+}
+
 .card-product-infos {
   border-color: $orange;
   border-radius: 5px;
   color: $black;
-  height: 160px;
   width: 100%;
 }
+
 .card-product-infos h2 {
   padding: 0; /* Supprime le padding */
   border-bottom: 2px solid $orange; /* Bordure orange */
@@ -34,7 +46,6 @@
   overflow: hidden;             /* Masque le texte dépassant */
   text-overflow: ellipsis;      /* Ajoute "..." pour le texte tronqué */
   line-height: 1.2;             /* Ajuste l'espacement des lignes si nécessaire */
-  max-height: calc(1.2em * 2);
   text-decoration: none;
 }
 
@@ -48,21 +59,37 @@
   text-decoration: none;
 }
 
-body {
-  font-family: $body-font; // Applique "Prompt" pour le texte principal
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: $headers-font; // Applique "Montserrat" pour les titres
-}
-
 a {
   text-decoration: none;
 }
+
+// .container {
+//   margin: 1px; /* Supprime les marges externes */
+//   padding: 0;
+//   margin: auto; /* Supprime les marges internes */
+//   padding-bottom: 50px;
+// }
+
+// .container .d-flex {
+//   margin: 5px; /* Réduit l'espace entre les cartes */
+//   padding: 0px; /* Ajuste l'espace interne des cartes */
+// }
+
+// .d-flex {
+//   border: 2px solid $orange; /* Épaisseur et couleur de la bordure */
+//   border-radius: 8px; /* Ajoute des coins arrondis */
+//   padding: 10px; /* Espacement interne */
+//   margin: 5px 0; /* Espacement entre les cartes */
+// }
 
 .btn-link {
   all: unset; /* Supprime tous les styles par défaut */
   display: block; /* Assure que le lien agit comme un bloc */
   text-decoration: none; /* Supprime les soulignements éventuels */
   color: $white; /* Hérite de la couleur parent */
+}
+
+.card-product_infos:hover {
+  transform: scale(1.02); /* Légère mise en avant au survol */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ajout d'une ombre */
 }

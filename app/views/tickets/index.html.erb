@@ -42,7 +42,7 @@
               <%if ticket.photos.attached?%>
                 <%= cl_image_tag ticket.photos.first.key, alt: "Picture of #{ticket.title}", class: "" %>
               <%else%>
-                <div class="card-product-infos">
+                <div class="card-product-infos h-160">
                   <h2 class=""><strong><%= ticket.category %></strong>: <%= ticket.title %></h2>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="d-flex justify-content-between align-items-center ticket-show-p-font">
