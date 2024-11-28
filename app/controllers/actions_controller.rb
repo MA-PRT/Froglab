@@ -4,7 +4,7 @@ class ActionsController < ApplicationController
   before_action :set_ticket, only: %i[create]
 
   def index
-    @actions = Action.all
+    @actions = Action.where(user: current_user)
     @tickets = Ticket.all
   end
 
