@@ -1,3 +1,20 @@
+<<<<<<< HEAD
+=======
+.card-show-ticket {
+  background-color: $white;
+  color: $gray;
+  margin-top: 3em;
+}
+
+.ticket-show-h-font {
+  font-family: $body-font;
+}
+
+.ticket-show-p-font {
+  font-family: $headers-font;
+}
+
+>>>>>>> master
 .card-tkt-show-ongoing {
   background-color: #FA812F;
   color: $white; /* Utilisation directe du code couleur */
@@ -7,7 +24,10 @@
   text-align: center;
   display: inline-block;
   white-space: nowrap; /* Assure que le texte reste sur une seule ligne */
+<<<<<<< HEAD
   height: 30px;
+=======
+>>>>>>> master
 }
 
 .card-tkt-show-solved {
@@ -20,3 +40,7 @@
   display: inline-block;
   white-space: nowrap;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> master

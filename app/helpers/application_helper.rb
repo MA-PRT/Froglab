@@ -1,10 +1,10 @@
 module ApplicationHelper
-  def progress_bar(state)
+  def progress_point(state)
     case state
     when "very_low"
-      { number: "10", color:  "#1F4529" }
+      { number: "10", color:  "#5dc97a" }
     when "low"
-      { number: "25", color:  "#6EC207" }
+      { number: "25", color:  "#3cdb14" }
     when "medium"
       { number: "50", color:  "#FA812F" }
     when "high"
