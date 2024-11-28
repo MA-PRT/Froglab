@@ -4,22 +4,27 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="card shadow-sm">
-        <div class="card-body new-form">
-          <%= simple_form_for @ticket, html: { class: "needs-validation" } do |f| %>
-            <div class="mb-3">
-              <%= f.input :photos,
-                          label: 'Photo',
-                          input_html: {
-                            capture: 'user',
-                            accept: 'image/*',
-                            multiple: true },
-                          input_html: { class: 'custom-file' } %>
+        <div class="card-body new-form" data-controller="photos">
+          <%= simple_form_for @ticket, html: { multipart: true } do |f| %>
+            <%= f.input :photo, as: :file, input_html: { id: 'photos-upload', style: 'display: none;', accept: 'image/*', 'data-photos-target': 'photoUpload' }, label: false %>
+
+            <div id="camera-container d-flex">
+              <video data-photos-target="video" class="responsive-video" autoplay></video>
+              <canvas data-photos-target="canvas" class="responsive-canvas" style="display: none;"></canvas>
+              <img data-photos-target="photoPreview" alt="Photo capturée" class="responsive-img" style="display: none;" />
             </div>
+
+            <div id="photos-buttons" class="mt-3 d-flex justify-content-between">
+              <button class="orange-highlighted-button w-100 me-2" type="button" data-action="photos#takePhoto" data-photos-target="takePhoto">Prendre la photo</button>
+              <button class="orange-highlighted-button w-100 me-2" type="button" data-action="photos#confirmPhoto" data-photos-target="confirmPhoto" style="display: none;">Confirmer la photo</button>
+              <button class="orange-highlighted-button w-100" type="button" data-action="photos#retakePhoto" data-photos-target="retakePhoto" style="display: none;">Reprendre la photo</button>
+            </div>
+
             <div class="mb-3">
               <%= f.input :title, label: 'Titre', input_html: { class: 'form-control' } %>
             </div>
             <div class="mb-3">
-              <%= f.input :content, label: 'Description (optionnelle)', as: :text, input_html: { rows: 3, class: 'form-control' } %>
+              <%= f.input :content, label: 'Description (optionnelle)', as: :text, input_html: { rows: 2, class: 'form-control' } %>
             </div>
             <div class="mb-3">
               <%= f.input :priority,
