@@ -1,69 +1,37 @@
-<div class="container">
-  <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
-  <%# d-lg-none top-tabs fixed-top bg-gray border-top %>
-    <li class="nav-item d-flex justify-content-around" role="presentation">
-      <button class="btn nav-link active communication-tab" id="communications-tab" data-bs-toggle="tab" data-bs-target="#communications-tab-pane" type="button" role="tab" aria-controls="communications-tab-pane" aria-selected="true">Communications</button>
-    </li>
-    <li class="nav-item d-flex justify-content-around" role="presentation">
-      <button class="btn nav-link ticket-tab" id="tickets-tab" data-bs-toggle="tab" data-bs-target="#tickets-tab-pane" type="button" role="tab" aria-controls="tickets-tab-pane" aria-selected="true">Tickets</button>
-    </li>
-    <li class="nav-item d-flex justify-content-around" role="presentation">
-      <button class="btn nav-link action-tab" id="Actions-tab" data-bs-toggle="tab" data-bs-target="#actions-tab-pane" type="button" role="tab" aria-controls="Actions-tab-pane" aria-selected="true">Actions</button>
-    </li>
-  </ul>
+<div class="row fixed-bottom justify-content-center border-top text-bg-dark">
+  <div class="btn col-2">
+    <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#F2F2F2"><path d="M716.92-460v-40h129.23v40H716.92Zm43.39 258.46-103.39-77.54 24.93-31.69 103.38 77.54-24.92 31.69Zm-81.54-450.77L653.85-684l103.38-77.54 24.92 31.69-103.38 77.54ZM220-241.54v-152.31h-41.54q-26.84 0-45.73-18.88-18.88-18.89-18.88-45.73v-43.08q0-26.84 18.88-45.73 18.89-18.88 45.73-18.88h149.23L486.15-660v360l-158.46-93.85H260v152.31h-40Zm226.15-129.69v-217.54l-107.23 62.62H178.46q-9.23 0-16.92 7.69-7.69 7.69-7.69 16.92v43.08q0 9.23 7.69 16.92 7.69 7.69 16.92 7.69h160.46l107.23 62.62Zm110.77 6.77v-231.08q20.08 18.62 32.35 48.89 12.27 30.27 12.27 66.65 0 36.38-12.27 66.65-12.27 30.27-32.35 48.89ZM300-480Z"/></svg>
+    <p class="">Comms</p>
+  </div>
+  <div class="btn col-2">
+    <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#F96D00"><path d="M200-120v-507.85q0-24.3 17.28-41.38 17.27-17.08 41.18-17.08h294.62q23.91 0 41.18 17.08 17.28 17.08 17.28 41.38V-120L406.15-226 200-120Zm33.85-56.79 172.3-87.75 171.54 87.75v-451.06q0-10.77-6.92-17.69-6.92-6.92-17.69-6.92H258.46q-10.77 0-17.69 6.92-6.92 6.92-6.92 17.69v451.06Zm492.3-85.36v-519.54q0-10.77-6.92-17.69-6.92-6.93-17.69-6.93H312.67v-33.84h388.87q23.91 0 41.18 17.07Q760-806 760-781.69v519.54h-33.85Zm-492.3-390.31H577.69 233.85Z"/></svg>
+    <p class="text-warning">Tickets</p>
+  </div>
+  <div class="btn col-2">
+    <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#F2F2F2"><path d="M240-120v-680h560l-83.85 170.77L800-458.46H280V-120h-40Zm40-378.46h456.62l-64.93-130.77L736.62-760H280v261.54Zm0 0V-760v261.54Z"/></svg>
+    <p class="">Flag</p>
+  </div>
+  <div class="btn col-2">
+    <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#F2F2F2"><path d="M644.23-243.85 530.69-357.38l27.54-27.54 85 85 170-170 27.54 28.54-196.54 197.53Zm0-289.23L530.69-646.62l27.54-27.53 85 85 170-170 27.54 28.53-196.54 197.54ZM120-315.38v-40h320v40H120Zm0-289.24v-40h320v40H120Z"/></svg>
+    <p class="">Actions</p>
+  </div>
+  <div class="btn col-2">
+    <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#F2F2F2"><path d="M160-269.23v-40h640v40H160ZM160-460v-40h640v40H160Zm0-190.77v-40h640v40H160Z"/></svg>
+    <p class="">Menu</p>
+  </div>
 </div>
-<!-- Content -->
-
-<div class="tab-content position-sticky" id="myTabContent">
 
 
-  <div class="tab-pane fade" id="communications-tab-pane" role="tabpanel" aria-labelledby="communications-tab" tabindex="0">
-    <div class="container justify-content-center">
-      <% @communications.each do |communication| %>
-          <div class="d-flex justify-content-between m-1 rounded-4 border-2">
-            <%# <%= cl_image_tag booking.rocket.photos.first.key%>
-            <div class="card-product-infos">
-              <h2><%= communication.title %></h2>
-              <p><%= communication.category %></p>
-              <p><%= communication.content %></p>
-            </div>
+<div class="container justify-content-center mt-3">
+    <% @tickets.each do |ticket| %>
+        <div class="d-flex justify-content-between m-2 rounded-4 border-2">
+          <%# <%= cl_image_tag booking.rocket.photos.first.key%>
+          <div class="card-product-infos">
+            <h2 class=""><%= ticket.title %></h2>
+            <p class=""><%= ticket.category %></p>
+            <p class=""><%= ticket.status %></p>
+            <p class=""><%= ticket.content %></p>
           </div>
-      <% end %>
-    </div>
+        </div>
+    <% end %>
   </div>
-
-  <div class="tab-pane fade show active" id="tickets-tab-pane" role="tabpanel" aria-labelledby="tickets-tab" tabindex="1">
-    <div class="container justify-content-center">
-      <% @tickets.each do |ticket| %>
-          <div class="d-flex justify-content-between m-2 rounded-4 border-2">
-            <%# <%= cl_image_tag booking.rocket.photos.first.key%>
-            <div class="card-product-infos">
-              <h2 class=""><%= ticket.title %></h2>
-              <p class=""><%= ticket.category %></p>
-              <p class=""><%= ticket.status %></p>
-              <p class=""><%= ticket.content %></p>
-            </div>
-          </div>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="tab-pane fade" id="actions-tab-pane" role="tabpanel" aria-labelledby="actions-tab" tabindex="2">
-    <div class="container justify-content-center">
-      <% @tickets.each do |ticket| %>
-        <% ticket.actions.each do |action| %>
-          <div class="d-flex justify-content-between m-2 rounded-4 border-2">
-            <%# <%= cl_image_tag booking.rocket.photos.first.key%>
-            <div class="card-product-infos">
-              <h2 class=""><%= action.title %></h2>
-              <p class=""><%= action.due_date %></p>
-              <p class=""><%= action.status %></p>
-              <p class=""><%= action.user_id%></p>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
-
-</div>
