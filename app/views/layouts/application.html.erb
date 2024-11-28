@@ -12,7 +12,7 @@
 
   <body>
 
-    <% if current_page?(ticket_path(@ticket)) %>
+    <% if controller_name == "tickets" && action_name == "show" %>
       <%= yield %>
     <% else %>
       <div class="container">
