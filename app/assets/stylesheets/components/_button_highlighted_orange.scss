@@ -3,31 +3,47 @@
   background-color: $orange;
   color: $white;
   border: none;
-  border-radius: 4px; // Ajustez selon vos besoins
-  padding: 10px 20px; // Ajustez selon vos besoins
-  font-size: 20px; // Ajustez selon vos besoins
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 20px;
   font-weight: bold;
   text-align: center;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px; // Espace entre le texte et le logo
+  gap: 8px;
   cursor: pointer;
-  box-shadow: 0px 4px 6px rgba($orange, 0.5); // Ombre orange avec transparence
+  box-shadow: 0px 4px 6px rgba($orange, 0.5);
 
-  // Transitions pour un effet smooth
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
 
-  // Effet hover
   &:hover {
     background-color: darken($orange, 10%);
     box-shadow: 0px 6px 8px rgba($orange, 0.7);
   }
+}
 
-  // Logo à l'intérieur du bouton
-  png {
-    fill: $orange; // Remplit le logo en orange
-    width: 20px; // Ajustez selon vos besoins
-    height: 20px; // Ajustez selon vos besoins
+.orange-highlighted-button-outlined {
+  background-color: transparent;
+  color: $orange;
+  border: 2px solid $orange;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: none;
+
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    background-color: $orange;
+    color: $white;
+    box-shadow: 0px 4px 6px rgba($orange, 0.5);
   }
 }
