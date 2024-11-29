@@ -6,22 +6,22 @@
     <div class="col-12">
       <div id="carouselExampleIndicators" class="carousel slide h-100">
         <div class="carousel-indicators">
-          <% if @ticket.photo.any? %>
-            <%# <% @ticket.photo.each_with_index do |_, index| %>
+          <% if @ticket.photos.any? %>
+            <% @ticket.photos.each_with_index do |_, index| %>
               <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%= index %>" class="<%= 'active' if index == 0 %>" aria-current="<%= 'true' if index == 0 %>" aria-label="Slide <%= index + 1 %>"></button>
-            <%# <% end %>
+            <% end %>
           <% else %>
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
           <% end %>
         </div>
 
         <div class="carousel-inner h-100">
-          <% if @ticket.photo.any? %>
-            <%# <% @ticket.photo.each_with_index do |photo, index| %>
+          <% if @ticket.photos.any? %>
+            <% @ticket.photos.each_with_index do |photo, index| %>
               <div class="carousel-item <%= 'active' if index == 0 %> h-100">
                 <%= cl_image_tag photo.key, crop: "lfill", class: "d-block w-100 h-100", alt: "Ticket Image" %>
               </div>
-            <%# <% end %>
+            <% end %>
           <% else %>
             <div class="carousel-item active h-100">
               <img src="https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg" class="d-block w-100 h-100" alt="No Image Available">

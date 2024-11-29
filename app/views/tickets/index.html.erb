@@ -35,14 +35,13 @@
 <div class="container-index justify-content-center mt-3">
     <% @tickets.each do |ticket| %>
       <div class="d-flex-ticket justify-content-between rounded-4">
-        <%# <%= cl_image_tag booking.ticket.photo.first.key%>
         <div>
           <div>
             <%= link_to ticket_path(ticket), class: "" do%>
-              <%if ticket.photo.attached?%>
-                <%= cl_image_tag ticket.photo.key, alt: "Picture of #{ticket.title}", class: "" %>
+              <%if ticket.photos.attached?%>
+                <%= cl_image_tag ticket.photos.first.key, alt: "Picture of #{ticket.title}", class: "" %>
               <%else%>
-                <div class="card-product-infos h-160">
+                <div class="card-product-infos">
                   <h2 class=""><strong><%= ticket.category %></strong>: <%= ticket.title %></h2>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="d-flex justify-content-between align-items-center ticket-show-p-font">
