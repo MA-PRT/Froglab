@@ -45,3 +45,8 @@
   display: inline-block;
   white-space: nowrap;
 }
+
+.container-index {
+  padding: 0; /* Supprime les marges internes */
+  padding-bottom: 100px; /* Ajustez la valeur en fonction de la hauteur de la navbar */
+}
