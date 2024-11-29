@@ -1,6 +1,6 @@
 class Ticket < ApplicationRecord
-  enum status: [ :just_added, :ongoing, :solved ]
-  enum priority: [ :very_low, :low, :medium, :high, :very_high ]
+  enum status: [ :nouveau, :'en cours', :résolu ]
+  enum priority: [ :'très basse', :basse, :moyenne, :haute, :'très haute' ]
 
   belongs_to :user
   belongs_to :team

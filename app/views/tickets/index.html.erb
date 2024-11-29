@@ -45,9 +45,11 @@
                   <h2 class=""><strong><%= ticket.category %></strong>: <%= ticket.title %></h2>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="d-flex justify-content-between align-items-center ticket-show-p-font">
-                      <% if ticket.status == "ongoing" %>
+                      <% if ticket.status == "nouveau" %>
+                        <span class="card-tkt-show-new rounded-pill align-items-center"><%= ticket.status.capitalize %></span>
+                      <% elsif ticket.status == "en cours" %>
                         <span class="card-tkt-show-ongoing rounded-pill align-items-center"><%= ticket.status.capitalize %></span>
-                      <% elsif ticket.status == "solved" %>
+                      <% elsif ticket.status == "résolu" %>
                         <span class="card-tkt-show-solved rounded-pill align-items-center"><%= ticket.status.capitalize %></span>
                       <% end %>
                     </div>

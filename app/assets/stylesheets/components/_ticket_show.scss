@@ -34,3 +34,14 @@
   display: inline-block;
   white-space: nowrap;
 }
+
+.card-tkt-show-new {
+  background-color: rgb(49, 94, 190);
+  font-weight: bold;
+  color: $white;
+  padding: 0.3em 1em; /* Même logique pour garder une taille homogène */
+  margin: 0.2em;
+  text-align: center;
+  display: inline-block;
+  white-space: nowrap;
+}

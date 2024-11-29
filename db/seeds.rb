@@ -79,7 +79,7 @@ ticket1 = Ticket.create!(
   content: "Je ne comprends pas à quelle porte les camions pour le chargement des pièces sont censés arriver. Il n'y a plus de balisage, ce qui crée de la confusion et des retards.",
   priority: 2,
   category: "Process",
-  status: :ongoing,
+  status: 1,
   user: user_logistic_operator_3,
   manager: user_logistic_manager,
   team: logistique
@@ -90,7 +90,7 @@ ticket2 = Ticket.create!(
   content: "Les nouveaux employés n'ont pas reçu la formation complète sur le tri et l'étiquetage des colis, causant des erreurs dans les envois et des retards.",
   priority: 1,
   category: "Lean",
-  status: :ongoing,
+  status: 1,
   user: user_rh_manager,
   manager: user_logistic_manager,
   team: rh
@@ -101,7 +101,7 @@ ticket3 = Ticket.create!(
   content: "Plusieurs scanners pour lire les codes-barres des colis sont en panne, ralentissant considérablement le traitement des commandes et augmentant les erreurs.",
   priority: 3,
   category: "Tools",
-  status: :ongoing,
+  status: 1,
   user: user_logistic_operator_4,
   manager: user_logistic_manager,
   team: logistique
@@ -112,7 +112,7 @@ ticket4 = Ticket.create!(
   content: "De nombreux colis arrivent avec des emballages endommagés, ce qui nuit à la satisfaction client et provoque des retours fréquents.",
   priority: 2,
   category: "Quality",
-  status: :ongoing,
+  status: 1,
   user: user_sav_employee_1,
   manager: user_logistic_manager,
   team: logistique
@@ -123,7 +123,7 @@ ticket5 = Ticket.create!(
   content: "Le tapis roulant principal de la zone d'expédition tombe régulièrement en panne, provoquant des arrêts prolongés et des retards dans la préparation des commandes.",
   priority: 4,
   category: "Maintenance",
-  status: :just_added,
+  status: 2,
   user: user_logistic_operator_5,
   team: logistique
 )
@@ -133,7 +133,7 @@ ticket6 = Ticket.create!(
   content: "Le protocole actuel pour les exercices d'incendie n'est plus à jour, ce qui pourrait entraîner des risques en cas d'incident réel. Il faut le réviser rapidement.",
   priority: 3,
   category: "Security",
-  status: :just_added,
+  status: 0,
   user: user_logistic_operator_3,
   team: logistique
 )
@@ -144,7 +144,7 @@ puts "Creating actions..."
 Action.create!(
   title: "Installer un balisage temporaire dans la zone de chargement",
   due_date: Date.today + 3, # Échéance dans 3 jours
-  status: :ongoing, # Statut initial : 0 (non commencé)
+  status: 0, # Statut initial : 0 (non commencé)
   content: "Mettre en place un balisage clair pour indiquer aux chauffeurs où se rendre pour le chargement. Prévoir une signalisation temporaire.",
   user: user_ceo, # Responsable de l'action
   ticket: ticket1
@@ -154,7 +154,7 @@ Action.create!(
 Action.create!(
   title: "Organiser une session de formation pour les nouveaux employés",
   due_date: Date.today + 7, # Échéance dans une semaine
-  status: :ongoing,
+  status: 0,
   content: "Préparer une session pour couvrir les règles de tri, la manipulation des colis fragiles et l'étiquetage. Envoyer une invitation à tous les employés concernés.",
   user: user_sav_manager,
   ticket: ticket2
@@ -164,7 +164,7 @@ Action.create!(
 Action.create!(
   title: "Réparer ou remplacer les scanners défectueux",
   due_date: Date.today + 2, # Échéance urgente
-  status: :ongoing,
+  status: 0,
   content: "Vérifier les scanners des zones B, C et D, et effectuer les réparations nécessaires ou les remplacer si nécessaire.",
   user: user_rh_employee_1,
   ticket: ticket3
@@ -174,7 +174,7 @@ Action.create!(
 Action.create!(
   title: "Réviser la qualité des emballages avec le fournisseur",
   due_date: Date.today + 10, # Échéance modérée
-  status: :ongoing,
+  status: 0,
   content: "Organiser une réunion avec le fournisseur d'emballages pour discuter des problèmes récents et demander une amélioration de la qualité. Envisager une alternative en cas de non-conformité.",
   user: user_logistic_operator_5,
   ticket: ticket4
@@ -183,7 +183,7 @@ Action.create!(
 Action.create!(
   title: "Former les opérateurs",
   due_date: Date.today + 20, # Échéance modérée
-  status: :ongoing,
+  status: 0,
   content: "",
   user: user_logistic_operator_3,
   ticket: ticket4
@@ -192,32 +192,30 @@ Action.create!(
 Action.create!(
   title: "Evaluer la pertinence des outillages d'emballage",
   due_date: Date.today + 3, # Échéance modérée
-  status: :solved,
+  status: 1,
   content: "",
   user: user_logistic_manager,
   ticket: ticket4
 )
 
 
-# # Action pour le ticket 5 (Maintenance)
-# Action.create!(
-#   title: "Planifier une maintenance préventive pour le tapis roulant",
-#   due_date: Date.today + 5, # Échéance à court terme
-#   status: :ongoing,
-#   content: "Mettre en place un plan d'entretien préventif mensuel pour éviter les pannes récurrentes sur le tapis roulant principal. Coordonner avec l'équipe de maintenance.",
-#   user: user_logistic_operator_2,
-#   ticket: ticket5
-# )
+Action.create!(
+  title: "Planifier une maintenance préventive pour le tapis roulant",
+  due_date: Date.today + 5, # Échéance à court terme
+  status: 0,
+  content: "Mettre en place un plan d'entretien préventif mensuel pour éviter les pannes récurrentes sur le tapis roulant principal. Coordonner avec l'équipe de maintenance.",
+  user: user_logistic_operator_2,
+  ticket: ticket5
+)
 
-# # Action pour le ticket 6 (Security)
-# Action.create!(
-#   title: "Mettre à jour le protocole de sécurité incendie",
-#   due_date: Date.today + 14, # Échéance à moyen terme
-#   status: :ongoing,
-#   content: "Revoir les protocoles existants et inclure les nouvelles zones et procédures. Organiser un exercice de sécurité pour tester les nouvelles directives.",
-#   user: user_logistic_operator_5,
-#   ticket: ticket6
-# )
+Action.create!(
+  title: "Mettre à jour le protocole de sécurité incendie",
+  due_date: Date.today + 14, # Échéance à moyen terme
+  status: 0,
+  content: "Revoir les protocoles existants et inclure les nouvelles zones et procédures. Organiser un exercice de sécurité pour tester les nouvelles directives.",
+  user: user_logistic_operator_5,
+  ticket: ticket6
+)
 
 puts "Actions created..."
 
