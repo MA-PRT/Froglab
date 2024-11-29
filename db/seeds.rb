@@ -52,6 +52,8 @@ TeamMember.create!(team: sav, user: user_sav_manager)
 TeamMember.create!(team: sav, user: user_sav_employee_1)
 TeamMember.create!(team: rh, user: user_rh_manager)
 TeamMember.create!(team: rh, user: user_rh_employee_1)
+TeamMember.create!(team: rh, user: user_ceo)
+
 TeamMember.create!(team: logistique, user: user_logistic_manager)
 TeamMember.create!(team: logistique, user: user_logistic_operator_1)
 TeamMember.create!(team: logistique, user: user_logistic_operator_2)
@@ -138,6 +140,16 @@ ticket6 = Ticket.create!(
   team: logistique
 )
 
+ticket7 = Ticket.create!(
+  title: "ticket comex",
+  content: "Le protocole comex doit être revu",
+  priority: 3,
+  category: "Management",
+  status: 0,
+  user: user_rh_manager,
+  team: comex
+)
+
 puts "Creating actions..."
 
 # Action pour le ticket 1 (Process)
@@ -198,6 +210,24 @@ Action.create!(
   ticket: ticket4
 )
 
+
+Action.create!(
+  title: "action 1 du ticket 7",
+  due_date: Date.today + 3, # Échéance modérée
+  status: 0,
+  content: "",
+  user: user_ceo,
+  ticket: ticket7
+)
+
+Action.create!(
+  title: "action 2 du ticket 7",
+  due_date: Date.today + 3, # Échéance modérée
+  status: 1,
+  content: "",
+  user: user_rh_manager,
+  ticket: ticket7
+)
 
 # # Action pour le ticket 5 (Maintenance)
 # Action.create!(
