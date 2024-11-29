@@ -44,7 +44,7 @@
       data-content="<%= communication.content %>">
       <div class="card-product-infos">
         <h2>
-          <strong><%= communication.category.capitalize %></strong>: <%= communication.title %>
+          <strong><%= communication.category.capitalize %></strong>: <%= communication.title.capitalize %>
         </h2>
         <p><%= truncate(communication.content.capitalize, length: 100) %></p>
       </div>

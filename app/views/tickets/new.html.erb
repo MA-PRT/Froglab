@@ -1,21 +1,31 @@
 <div class="container mt-3" id="new-ticket-layout">
-  <h1 class="text-center mb-4">Création de votre ticket</h1>
+
 
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="card shadow-sm">
         <div class="card-body new-form" data-controller="photos">
-          <%= simple_form_for @ticket, html: { multipart: true } do |f| %>
-            <%= f.input :photo, as: :file, input_html: { id: 'photos-upload', style: 'display: none;', accept: 'image/*', 'data-photos-target': 'photoUpload' }, label: false %>
+          <div class="d-flex justify-content-between">
+            <h1 class="text-center mb-4" style="color: black;"><strong>Création de ticket</strong></h1>
+            <a href="<%= tickets_path %>" class="btn-close mt-1" aria-label="Close"></a>
+          </div>
+          <%= simple_form_for @ticket, html: { multipart: true, data: { controller: "photos" } } do |f| %>
+            <%= f.label :photos, raw('<i class="fa-solid fa-camera" style="color: $orange;"></i> Choisir une photo'), for: 'ticket_photos', class: 'orange-highlighted-button-outlined', style: "width: 100%;" %>
+            <%= f.input :photos,
+                        label: false,
+                        input_html: {
+                          id: 'ticket_photos',
+                          accept: 'image/*',
+                          multiple: true,
+                          class: 'visually-hidden',
+                          data: { action: "change->photos#preview", photos_target: "input" }
+                        } %>
 
-            <div id="camera-container d-flex">
-              <video data-photos-target="video" class="responsive-video" autoplay></video>
-              <canvas data-photos-target="canvas" class="responsive-canvas" style="display: none;"></canvas>
-              <img data-photos-target="photoPreview" alt="Photo capturée" class="responsive-img" style="display: none;" />
+            <div id="photos-container" data-photos-target="previewContainer" style="margin-top: 15px;">
+              <!-- aperçu photo -->
             </div>
 
             <div id="photos-buttons" class="mt-3 d-flex justify-content-between">
-              <button class="orange-highlighted-button w-100 me-2" type="button" data-action="photos#takePhoto" data-photos-target="takePhoto">Prendre la photo</button>
               <button class="orange-highlighted-button w-100 me-2" type="button" data-action="photos#confirmPhoto" data-photos-target="confirmPhoto" style="display: none;">Confirmer la photo</button>
               <button class="orange-highlighted-button w-100" type="button" data-action="photos#retakePhoto" data-photos-target="retakePhoto" style="display: none;">Reprendre la photo</button>
             </div>
@@ -37,7 +47,9 @@
               <%= f.input :category, label: 'Catégorie', input_html: { class: 'form-control' } %>
             </div>
             <div class="d-grid">
-              <%= f.button :submit, 'Valider le ticket', class: 'orange-highlighted-button' %>
+              <%= button_tag raw('<i class="fa-regular fa-circle-check" style="color: white;"></i> Valider le ticket'),
+                              type: 'submit',
+                              class: 'orange-highlighted-button' %>
             </div>
           <% end %>
         </div>
