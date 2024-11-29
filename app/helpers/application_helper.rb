@@ -1,15 +1,15 @@
 module ApplicationHelper
   def progress_point(state)
     case state
-    when "very_low"
+    when "très basse"
       { number: "10", color:  "#5dc97a" }
-    when "low"
+    when "basse"
       { number: "25", color:  "#3cdb14" }
-    when "medium"
+    when "moyenne"
       { number: "50", color:  "#FA812F" }
-    when "high"
+    when "haute"
       { number: "75", color: "#C40C0C" }
-    when "very_high"
+    when "très haute"
       { number: "100", color: "#FF0000" }
     end
   end
