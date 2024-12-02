@@ -3,9 +3,14 @@ class TicketsController < ApplicationController
   before_action :set_ticket, only: %i[show destroy]
 
   def index
-    @tickets = Ticket.all
-    @communications = Communication.all
-    @actions = Action.all
+    @tickets = Ticket.order(
+      Arel.sql("CASE
+        WHEN status = '0' THEN 1
+        WHEN status = '1' THEN 2
+        WHEN status = '2' THEN 3
+        ELSE 4 END"),
+      created_at: :desc
+    )
   end
 
   def show

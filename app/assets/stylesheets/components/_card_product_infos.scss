@@ -15,6 +15,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 10px; /* Ajuste l'espace interne des cartes */
   margin-bottom: 15px;
   background-color: $white;
+  color: black;
 }
 
 .d-flex-ticket {
@@ -89,7 +90,77 @@ a {
   color: $white; /* Hérite de la couleur parent */
 }
 
-.card-product_infos:hover {
+.card-product-infos:hover {
   transform: scale(1.02); /* Légère mise en avant au survol */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ajout d'une ombre */
+}
+
+
+
+// version 2 cards index
+
+.card-index {
+  overflow: hidden;
+  height: 100px;
+  background: $white;
+  box-shadow: 3px 3px 0px rgba(249, 109, 0, 2);
+  display: flex;
+  align-items: center;
+  margin-top: 12px;
+  border-radius: 4px;
+
+  img {
+    height: 100px;
+    width: 100px;
+  }
+}
+
+.card-index-infos {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+  padding-left: 6px;
+  padding-right: 6px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.card-index-infos h2 {
+  font-size: 14px;
+  color: $black;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.card-index-infos p {
+  font-size: 12px;
+  line-height: 1.4;
+  color: $gray;
+  margin: 0;
+}
+
+.card-index-nouveau,
+.card-index-encours,
+.card-index-resolu {
+  font-size: 12px;
+  padding: 0.2em 0.6em;
+  border-radius: 12px;
+  white-space: nowrap;
+  color: $white;
+  text-align: center;
+}
+
+.card-index-nouveau {
+  background-color: rgb(172, 172, 172);
+}
+
+.card-index-encours {
+  background-color: rgb(0, 109, 210);
+}
+
+.card-index-resolu {
+  background-color: green;
 }

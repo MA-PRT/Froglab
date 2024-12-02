@@ -33,38 +33,35 @@
 
 
 <div class="container-index justify-content-center mt-3">
-    <% @tickets.each do |ticket| %>
-      <div class="d-flex-ticket justify-content-between rounded-4">
-        <div>
-          <div>
-            <%= link_to ticket_path(ticket), class: "" do%>
-              <%# <%if ticket.photos.attached?%>
-                <%# <%= cl_image_tag ticket.photos.first.key, alt: "Picture of #{ticket.title}", class: "" %>
-              <%# <%else%>
-                <div class="card-product-infos">
-                  <h2 class=""><strong><%= ticket.category %></strong>: <%= ticket.title %></h2>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="d-flex justify-content-between align-items-center ticket-show-p-font">
-                      <% if ticket.status == "nouveau" %>
-                        <span class="card-tkt-show-nouveau rounded-pill align-items-center"><%= ticket.status.capitalize %></span>
-                      <% elsif ticket.status == "en cours" %>
-                        <span class="card-tkt-show-encours rounded-pill align-items-center"><%= ticket.status.capitalize %></span>
-                      <% elsif ticket.status == "résolu" %>
-                        <span class="card-tkt-show-resolu rounded-pill align-items-center"><%= ticket.status.capitalize %></span>
-                      <% end %>
-                    </div>
-                    <strong><p>Priority:
-                      <span style="color: <%= progress_point(ticket.priority)[:color] %>">
-                      <%= ticket.priority.humanize %>
-                      </span>
-                    </p></strong>
-                  </div>
-                  <p class=""><%= ticket.content %></p>
-                </div>
-              <%# <% end %>
+  <% @tickets.each do |ticket| %>
+    <%= link_to ticket_path(ticket) do%>
+      <div class="card-index">
+          <%if ticket.photos.attached?%>
+            <%= cl_image_tag ticket.photos.first.key, alt: "Picture of #{ticket.title}",  width: 100, height: 100, crop: :fill %>
+          <%else%>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg"/>
+          <%end%>
+        <div class="card-index-infos">
+          <h2><strong><%= ticket.category %></strong>: <%= ticket.title %></h2>
+          <div class="d-flex justify-content-between align-items-center ">
+            <% if ticket.status == "nouveau" %>
+              <span class="card-index-nouveau rounded-pill align-items-center"><%= ticket.status.capitalize %></span>
+            <% elsif ticket.status == "en cours" %>
+              <span class="card-index-encours rounded-pill align-items-center"><%= ticket.status.capitalize %></span>
+            <% elsif ticket.status == "résolu" %>
+              <span class="card-index-resolu rounded-pill align-items-center"><%= ticket.status.capitalize %></span>
             <% end %>
+            <span class="progress-point me-1"
+              style="background-color: <%= progress_point(ticket.priority)[:color] %>;
+                width: 15px;
+                height: 15px;
+                border-radius: 50%;
+                display: inline-block;">
+            </span>
           </div>
+          <p class=""><%= ticket.content.truncate(40) %></p>
         </div>
       </div>
+    <% end %>
   <% end %>
 </div>

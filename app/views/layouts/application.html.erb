@@ -7,11 +7,17 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <link rel="manifest" href="<%= asset_path 'manifest.json' %>">
+    <%= render 'shared/ios_pwa_links' %>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Prompt:wght@400;700&display=swap" rel="stylesheet">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
   </head>
 
   <body>
-
     <% if controller_name == "tickets" && action_name == "show" %>
       <%= yield %>
     <% else %>
@@ -20,4 +26,5 @@
       </div>
     <% end %>
   </body>
+
 </html>
