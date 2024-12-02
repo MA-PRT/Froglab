@@ -5,6 +5,11 @@ class ActionsController < ApplicationController
 
   def index
     @tickets = Ticket.where(team: current_user.teams)
+    if params[:query].present?
+      @actions = Action.action_search(params[:query]).joins(:ticket).where(tickets: { team: current_user.teams })
+    else
+      @tickets
+    end
   end
 
   def show

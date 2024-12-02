@@ -3,7 +3,11 @@ class CommunicationsController < ApplicationController
   before_action :set_communication, only: %i[ show destroy ]
 
   def index
-    @communications = Communication.all
+    if params[:query].present?
+      @communications = Communication.communication_search(params[:query])
+    else
+      @communications = Communication.all
+    end
   end
 
   def show
