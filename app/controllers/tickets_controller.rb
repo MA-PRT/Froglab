@@ -4,12 +4,20 @@ class TicketsController < ApplicationController
 
   def index
     if params[:query].present?
-      @tickets = Ticket.search_with_enum(params[:query])
+      @tickets = Ticket.ticket_search(params[:query])
     else
       @tickets = Ticket.all
     end
-    @communications = Communication.all
-    @actions = Action.all
+
+    # Tri personnalisé par status et date de création
+    @tickets = @tickets.order(
+      Arel.sql("CASE
+        WHEN status = '0' THEN 1
+        WHEN status = '1' THEN 2
+        WHEN status = '2' THEN 3
+        ELSE 4 END"),
+      created_at: :desc
+    )
   end
 
   def show

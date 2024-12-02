@@ -20,26 +20,26 @@ class Ticket < ApplicationRecord
       tsearch: { prefix: true }
     }
 
-  # Méthode pour recherche avec gestion des enums
-  def self.search_with_enum(query)
-    if query.present?
-      # Vérifiez si le mot correspond à un enum
-      priority_values = priorities.to_s.keys
-      status_values = statuses.to_s.keys
+  # # Méthode pour recherche avec gestion des enums
+  # def self.search_with_enum(query)
+  #   if query.present?
+  #     # Vérifiez si le mot correspond à un enum
+  #     priority_values = priorities.to_s.keys
+  #     status_values = statuses.to_s.keys
 
-      # Cherchez les valeurs enum correspondantes
-      enum_conditions = []
-      enum_conditions << "priority = #{priorities[query]}" if priority_values.include?(query)
-      enum_conditions << "status = #{statuses[query]}" if status_values.include?(query)
+  #     # Cherchez les valeurs enum correspondantes
+  #     enum_conditions = []
+  #     enum_conditions << "priority = #{priorities[query]}" if priority_values.include?(query)
+  #     enum_conditions << "status = #{statuses[query]}" if status_values.include?(query)
 
-      # Combinez les résultats des enums avec la recherche PgSearch
-      if enum_conditions.any?
-        Ticket.where(enum_conditions.join(' OR ')).or(ticket_search(query))
-      else
-        ticket_search(query)
-      end
-    else
-      all
-    end
-  end
+  #     # Combinez les résultats des enums avec la recherche PgSearch
+  #     if enum_conditions.any?
+  #       Ticket.where(enum_conditions.join(' OR ')).or(ticket_search(query))
+  #     else
+  #       ticket_search(query)
+  #     end
+  #   else
+  #     all
+  #   end
+  # end
 end
