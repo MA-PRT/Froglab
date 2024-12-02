@@ -23,6 +23,11 @@ class ActionsController < ApplicationController
     end
   end
 
+  def update_status
+    @action = Action.find(params[:id])
+    @action.update(status: params[:status].to_i)
+  end
+
   def destroy
     @action.destroy
     redirect_to ticket_path(@action.ticket)
