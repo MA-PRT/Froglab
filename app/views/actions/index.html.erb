@@ -1,11 +1,13 @@
-<nav class="navbar navbar-dark bg-dark d-flex justify-content-center">
+<nav class="row navbar navbar-dark bg-dark text-bg-dark border-bottom">
   <!-- Navbar content -->
-  <div class="logo-container">
-<%= image_tag "froglab_home.png", class:"logo" %>
+  <div class=" col-1 logo-container">
+    <%= image_tag "froglab_logo_2.png", class:"logo" %>
   </div>
-  <%= form_with url: actions_path, method: :get, local: true do |f| %>
-    <%= f.text_field :query, placeholder: "Tapez un mot-clé...", class: "bg-dark rounded-pill font-navbar"%>
-    <button type="submit" class="bg-dark rounded-pill font-navbar search-button">
+  <div class="col-6">
+    <%= form_with url: actions_path, method: :get, local: true do |f| %>
+      <%= f.text_field :query, placeholder: "Recherchez...", class: "bg-dark rounded-pill font-navbar search-bar"%>
+  </div>
+    <button type="submit" class="me-3 col-3 bg-dark rounded-pill font-navbar search-button">
       <i class="fa-solid fa-magnifying-glass"></i>
     </button>
     <%# <%= f.submit "Q", class: "bg-dark rounded-pill font-navbar search-button"%>

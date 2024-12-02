@@ -6,20 +6,24 @@
 .logo {
   width: 37px; /* Ajustez selon vos besoins */
   height: 37px;
-  margin-right: 5px;
 }
 
 .font-navbar {
   font-family: $body-font;
-  font-size: 20px;
+  font-size: 25px;
   color: $white;
 }
 
 .search-button {
-  width: 50px;
+  width: 70px;
 }
 
 .navbar{
   position: sticky ;
   top: -2px;
+}
+
+.search-bar{
+  width: 200px ;
+  padding-left: 10px;
 }
