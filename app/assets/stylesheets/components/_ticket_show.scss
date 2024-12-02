@@ -12,24 +12,30 @@
   font-family: $headers-font;
 }
 
-.card-tkt-show-encours-txt {
-  color: #FA812F;
+.card-tkt-show-encours {
+  background-color: rgb(0, 109, 210);
   font-weight: bold;
+  color: $white;
+  padding: 0.3em 1em; /* Même logique pour garder une taille homogène */
+  margin: 0.2em;
   text-align: center;
   display: inline-block;
   white-space: nowrap;
 }
 
-.card-tkt-show-resolu-txt {
-  color: #6EC207;
+.card-tkt-show-resolu {
+  background-color: green;
   font-weight: bold;
+  color: $white;
+  padding: 0.3em 1em; /* Même logique pour garder une taille homogène */
+  margin: 0.2em;
   text-align: center;
   display: inline-block;
   white-space: nowrap;
 }
 
 .card-tkt-show-nouveau {
-  background-color: rgb(49, 94, 190);
+  background-color: rgb(172, 172, 172);
   font-weight: bold;
   color: $white;
   padding: 0.3em 1em; /* Même logique pour garder une taille homogène */
