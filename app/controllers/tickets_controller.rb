@@ -3,7 +3,11 @@ class TicketsController < ApplicationController
   before_action :set_ticket, only: %i[show destroy]
 
   def index
-    @tickets = Ticket.all
+    if params[:query].present?
+      @tickets = Ticket.search_with_enum(params[:query])
+    else
+      @tickets = Ticket.all
+    end
     @communications = Communication.all
     @actions = Action.all
   end
