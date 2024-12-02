@@ -1,4 +1,18 @@
 // Specific CSS for your home-page
-.background-image {
-  height: 100vh;
+
+.container_home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container_home h1 {
+  font-weight: bold;
+  font-size: 3rem;
+  color: #F96D00;
+}
+
+.profile_white {
+  color: white;
 }
