@@ -31,11 +31,146 @@
   </div>
 </div>
 
-<div class="container-index">
-  <%# Ticket pictures carrousel %>
-  <div id="show-container" class="d-flex flex-column">
+<%# Ticket pictures carrousel %>
 
-    <!-- Carousel Section -->
+<!-- Carousel Section // Carousel supprimé -> voir en bas de page -->
+<div>
+  <%if @ticket.photos.attached?%>
+    <%# Display first photo %>
+    <!-- Modal Button -->
+    <div class="img-show-modal-ticket" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+      <img src="<%= url_for(@ticket.photos.first) %>" class="img-show" alt= "<% @ticket.title %> photo">
+    </div>
+  <%end%>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header no-border-bottom">
+        <div class="modal-ticket-close-x" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-close"></i></div>
+      </div>
+      <div class="modal-body p-0">
+        <img src="<%= url_for(@ticket.photos.first) %>" class="img-show-modal-ticket" alt= "<% @ticket.title %> photo">
+      </div>
+      <div class="modal-footer no-border-top">
+        <button type="button" class="btn btn-warning text-decoration-underline text-light" data-bs-dismiss="modal">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="container-index">
+    <%# Ticket informations %>
+    <div class="card-body mt-4 mb-4">
+      <%# title & category && Content %>
+      <h3 class="ticket-show-h-font"><strong><%= @ticket.category %> : <%= @ticket.title %></strong></h3>
+    </div>
+    <%# Div Status & Priorité %>
+    <div class="d-flex justify-content-between align-items-center">
+      <%# Status %>
+      <div class="ticket-show-p-font">
+        <% if @ticket.status == "nouveau" %>
+            <span class="card-tkt-show-nouveau rounded-pill align-items-center"><%= @ticket.status.capitalize %></span>
+          <% elsif @ticket.status == "en cours" %>
+            <span class="card-tkt-show-encours rounded-pill align-items-center"><%= @ticket.status.capitalize %></span>
+          <% elsif @ticket.status == "résolu" %>
+            <span class="card-tkt-show-resolu rounded-pill align-items-center"><%= @ticket.status.capitalize %></span>
+        <% end %>
+      </div>
+      <!-- Priority Text -->
+      <div>
+        <p class="ticket-show-p-font">
+          Priorité :
+          <span style="color: <%= progress_point(@ticket.priority)[:color] %>">
+            <%= @ticket.priority.humanize %>
+          </span>
+        </p>
+      </div>
+    </div>
+    <%# Creation date / Update date %>
+    <div class="ticket-show-p-font">
+      <% if @ticket.created_at == @ticket.updated_at %>
+        <p><strong>Créé le :</strong> <%= @ticket.created_at.strftime("%d/%m/%Y à %H:%M") %></p>
+      <% else %>
+        <p><strong>Créé le :</strong> <%= @ticket.created_at.strftime("%d/%m/%Y à %H:%M") %></p>
+        <p><strong>Dernière modification :</strong> <%= @ticket.updated_at.strftime("%d/%m/%Y à %H:%M") %></p>
+      <% end %>
+    </div>
+    <%# Utilisateur %>
+    <p class="ticket-show-p-font"><strong>Utilisateur :</strong> <%= @ticket.user.first_name %> <%= @ticket.user.last_name %></p>
+    <%# Content %>
+    <div class="card-body ticket-show-p-font">
+      <p><%= @ticket.content %></p>
+    </div>
+    <%# Actions %>
+    <div>
+      <br>
+      <h5 class="mb-4 ticket-show-h-font"><strong>Actions à mettre en place :</strong></h5>
+      <% @ticket.actions.each do |action| %>
+        <div class="card mt-2 mb-2 card-show-ticket" data-controller="action-switch">
+          <div class="card-body">
+            <h6 class="ticket-show-h-font"><strong><%= action.title.capitalize %></strong></h6>
+            <p class="mt-3 mb-0">Attribué à : <%= action.user.first_name %> <%= action.user.last_name %></p>
+            <div class="d-flex justify-content-between align-items-center ticket-show-p-font mt-2">
+              <p class="mb-0 ticket-show-p-font">Date butoir : <br><%= action.due_date %></p>
+              <!-- Rounded switch -->
+              <div data-controller="switch-status" data-switch-status-id-value=<%= action.id %>>
+                <input type="checkbox" data-switch-status-target="status" data-action="change->switch-status#switch" id="toggle_<%= action.id %>" class="toggleCheckbox" <%= 'checked' if action.status == 'complétée' %> />
+                <label for="toggle_<%= action.id %>" class='toggleContainer'>
+                  <div>En cours</div>
+                  <div>Complété</div>
+                </label>
+              </div>
+            </div>
+            <p class="mt-2 ticket-show-p-font"><%= action.content %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <%# Comments %>
+    <div>
+      <h5 class="mt-3 mb-3 ticket-show-h-font mb-0"><strong>Commentaires :</strong></h5>
+      <%= simple_form_for [@ticket, @comment], defaults: { wrapper: false } do |f| %>
+        <div class="input-group mb-3">
+          <%= f.input :content, input_html: {
+            class: "",
+            placeholder: "Écrivez un commentaire...",
+          },
+          label: false %>
+          <div class="input-group-append">
+            <%= button_tag raw('<i class="fa-solid fa-paper-plane" style="color: #f96d00;"></i>'),
+                            type: 'submit',
+                            class: 'btn comment-submit' %>
+          </div>
+        </div>
+        <div id="comment-error"></div>
+      <% end %>
+      <div class="card mt-2 mb-2 card-show-ticket">
+        <% @comments.each do |comment| %>
+          <div class="border-bottom-comment card-body ticket-show-p-font mt-1 mb-1">
+            <p class=""><strong><%= comment.user.first_name %> <%= comment.user.last_name %></strong></p>
+            <p class=""><%= comment.created_at.strftime("%d/%m/%Y à %H:%M") %></p>
+            <p class=""><%= comment.content.capitalize %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# <!-- Toggle button new possibility -->
+<input type="checkbox" id="toggle" class="toggleCheckbox" />
+<label for="toggle" class='toggleContainer'>
+  <div>This is a toggle</div>
+  <div>button</div>
+</label> %>
+
+<%# Carroussel %>
+<% if false %>
+  <%if @ticket.photos.attached?%>
     <div class="row g-0 flex-grow-1">
       <div class="col-12">
         <div id="carouselExampleIndicators" class="carousel slide h-100">
@@ -76,124 +211,17 @@
       </div>
     </div>
   </div>
+  <%else%>
+  <%end%>
+<% end %>
 
-  <div class="container">
-    <%# Ticket informations %>
-    <div class="card-body mt-4 mb-4">
-      <%# title & category && Content %>
-      <h3 class="ticket-show-h-font"><strong><%= @ticket.category %> : <%= @ticket.title %></strong></h3>
-    </div>
-
-    <%# Priority point%>
-    <div class="mt-2 mb-2 d-flex justify-content-between align-items-center">
-
-     <!-- Priority Text -->
-      <p class="ticket-show-p-font mb-0">
-        Priorité :
-        <span style="color: <%= progress_point(@ticket.priority)[:color] %>">
-          <%= @ticket.priority.humanize %>
-        </span>
-      </p>
-    </div>
-
-    <%# Status %>
-    <div class="mt-3 mb-2 ticket-show-p-font">
-      <p><strong>Statut :</strong>
-        <% if @ticket.status == "nouveau" %>
-            <span class="card-tkt-show-nouveau rounded-pill align-items-center"><%= @ticket.status.capitalize %></span>
-          <% elsif @ticket.status == "en cours" %>
-            <span class="card-tkt-show-encours rounded-pill align-items-center"><%= @ticket.status.capitalize %></span>
-          <% elsif @ticket.status == "résolu" %>
-            <span class="card-tkt-show-resolu rounded-pill align-items-center"><%= @ticket.status.capitalize %></span>
-        <% end %>
-      </p>
-
-    </div>
-
-    <%# Creation date / Update date %>
-    <div class="ticket-show-p-font">
-      <% if @ticket.created_at == @ticket.updated_at %>
-        <p><strong>Créé le :</strong> <%= @ticket.created_at.strftime("%d/%m/%Y à %H:%M") %></p>
-      <% else %>
-        <p><strong>Créé le :</strong> <%= @ticket.created_at.strftime("%d/%m/%Y à %H:%M") %></p>
-        <p><strong>Derniere modification :</strong> <%= @ticket.updated_at.strftime("%d/%m/%Y à %H:%M") %></p>
-      <% end %>
-    </div>
-
-    <%# Utilisateur %>
-    <p class="ticket-show-p-font"><strong>Utilisateur :</strong> <%= @ticket.user.first_name %> <%= @ticket.user.last_name %></p>
-
-    <%# Content %>
-    <div class="card-body ticket-show-p-font">
-      <p><%= @ticket.content %></p>
-    </div>
-
-
-
-  <%# Actions %>
-  <div>
-    <br>
-    <h5 class="mb-4 ticket-show-h-font"><strong>Actions à mettre en place :</strong></h5>
-    <% @ticket.actions.each do |action| %>
-      <div class="card mt-2 mb-2 card-show-ticket" data-controller="action-switch">
-        <div class="card-body">
-          <h6 class="ticket-show-h-font"><strong><%= action.title.capitalize %></strong></h6>
-
-          <p class="mt-3 mb-0">Attribué à : <%= action.user.first_name %> <%= action.user.last_name %></p>
-
-          <div class="d-flex justify-content-between align-items-center ticket-show-p-font mt-2">
-            <p class="mb-0 ticket-show-p-font">Date butoir : <br><%= action.due_date %></p>
-
-            <!-- Rounded switch -->
-            <div data-controller="switch-status" data-switch-status-id-value=<%= action.id %>>
-              <input type="checkbox" data-switch-status-target="status" data-action="change->switch-status#switch" id="toggle_<%= action.id %>" class="toggleCheckbox" <%= 'checked' if action.status == 'complétée' %> />
-              <label for="toggle_<%= action.id %>" class='toggleContainer'>
-                <div>En cours</div>
-                <div>Complété</div>
-              </label>
-            </div>
-          </div>
-          <p class="mt-2 ticket-show-p-font"><%= action.content %></p>
-        </div>
-      </div>
+<!-- Progress Point /// commenté -->
+    <% if false %>
+      <span class="progress-point"
+        style="background-color: <%= progress_point(@ticket.priority)[:color] %>;
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          display: inline-block;">
+      </span>
     <% end %>
-  </div>
-
-  <%# Comments %>
-  <div>
-    <h5 class="mt-3 mb-3 ticket-show-h-font mb-0"><strong>Commentaires :</strong></h5>
-
-    <%= simple_form_for [@ticket, @comment], defaults: { wrapper: false } do |f| %>
-      <div class="input-group mb-3">
-        <%= f.input :content, input_html: {
-          class: "",
-          placeholder: "Écrivez un commentaire...",
-        },
-        label: false %>
-        <div class="input-group-append">
-          <%= button_tag raw('<i class="fa-solid fa-paper-plane" style="color: #f96d00;"></i>'),
-                          type: 'submit',
-                          class: 'btn comment-submit' %>
-        </div>
-      </div>
-      <div id="comment-error"></div>
-    <% end %>
-
-    <div class="card mt-2 mb-2 card-show-ticket">
-      <% @comments.each do |comment| %>
-        <div class="border-bottom-comment card-body ticket-show-p-font mt-1 mb-1">
-          <p class=""><strong><%= comment.user.first_name %> <%= comment.user.last_name %></strong></p>
-          <p class=""><%= comment.created_at.strftime("%d/%m/%Y à %H:%M") %></p>
-          <p class=""><%= comment.content.capitalize %></p>
-        </div>
-      <% end %>
-    </div>
-  </div>
-</div>
-
-<%# <!-- Toggle button new possibility -->
-<input type="checkbox" id="toggle" class="toggleCheckbox" />
-<label for="toggle" class='toggleContainer'>
-  <div>This is a toggle</div>
-  <div>button</div>
-</label> %>

@@ -210,7 +210,6 @@ Action.create!(
   ticket: ticket4
 )
 
-
 Action.create!(
   title: "action 1 du ticket 7",
   due_date: Date.today + 3, # Échéance modérée
