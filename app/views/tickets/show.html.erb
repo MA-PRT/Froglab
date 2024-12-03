@@ -86,7 +86,7 @@
 
     <%# Priority point%>
     <div class="mt-2 mb-2 d-flex justify-content-between align-items-center">
-    
+
      <!-- Priority Text -->
       <p class="ticket-show-p-font mb-0">
         Priorité :
@@ -113,9 +113,9 @@
     <%# Creation date / Update date %>
     <div class="ticket-show-p-font">
       <% if @ticket.created_at == @ticket.updated_at %>
-        <p><strong>Créé le :</strong> <%= @ticket.created_at %></p>
+        <p><strong>Créé le :</strong> <%= @ticket.created_at.strftime("%d-%m-%Y %H:%M:%S")  %></p>
       <% else %>
-        <p><strong>Créé le :</strong> <%= @ticket.created_at %></p>
+        <p><strong>Créé le :</strong> <%= @ticket.created_at.strftime("%d-%m-%Y %H:%M:%S")  %></p>
         <p><strong>Derniere modification :</strong> <%= @ticket.updated_at.to_s %></p>
       <% end %>
     </div>
