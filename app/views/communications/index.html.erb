@@ -17,16 +17,26 @@
 <div class="container-index justify-content-center mt-3">
   <% @communications.each do |communication| %>
 
-    <div class="d-flex-ticket justify-content-between rounded-4 border-2 card-product"
+    <div class="d-flex justify-content-between card-com"
       data-bs-toggle="modal"
       data-bs-target="#<%= communication.id %>-communication"
       data-title="<%= communication.title %>"
       data-category="<%= communication.category %>"
       data-content="<%= communication.content %>">
-      <div class="card-product-infos">
+      <div class="card-com-infos">
         <h2>
           <strong><%= communication.category.capitalize %></strong>: <%= communication.title.capitalize %>
         </h2>
+          <div class="d-font">
+            <% if communication.created_at == communication.updated_at %>
+              <p><%= communication.created_at.strftime("%d-%m-%Y %H:%M:%S") %></p>
+            <% else %>
+              <p><%= communication.created_at.strftime("%d-%m-%Y %H:%M:%S") %></p>
+              <p><strong>Dernière modification :</strong> <%= communication.updated_at.strftime("%d-%m-%Y %H:%M:%S") %></p>
+            <% end %>
+          </div>
+
+
         <p><%= truncate(communication.content.capitalize, length: 100) %></p>
       </div>
     </div>
