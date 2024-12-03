@@ -27,7 +27,7 @@
 
             <div class="date-status">
               <p class="db-font">Date butoir : <strong><%= action.due_date.strftime("%d-%m-%Y") %></strong></p>
-                <div class="d-flex justify-content-around align-items-center d-inline" style="margin-top: -12px;">
+                <div class="d-flex justify-content-around align-items-center d-inline">
                   <% if action.ticket.status == "nouveau" %>
                     <span class="card-act-new rounded-pill card-stat-act"><%= action.ticket.status.capitalize %></span>
                   <% elsif action.ticket.status == "en cours" %>
@@ -56,7 +56,7 @@
           <h2 class=""><strong><%= action.ticket.team.name %></strong> : <%= action.title %></h2>
             <div class="date-status">
               <p class="db-font">Date butoir : <strong><%= action.due_date.strftime("%d-%m-%Y") %></strong></p>
-                <div class="d-flex justify-content-around align-items-center d-inline" style="margin-top: -12px;">
+                <div class="d-flex justify-content-around align-items-center d-inline">
                   <% if ticket.status == "nouveau" %>
                     <span class="card-act-new rounded-pill card-stat-act"><%= ticket.status.capitalize %></span>
                   <% elsif ticket.status == "en cours" %>
