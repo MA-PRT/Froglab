@@ -1,0 +1,61 @@
+.card-action {
+  overflow: hidden;
+  height: 100px;
+  background: $white;
+  box-shadow: 3px 3px 0px rgba(249, 109, 0, 2);
+  display: flex;
+  align-items: center;
+  margin-top: 12px;
+  border-radius: 4px;
+}
+
+.card-action-infos {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+  padding-left: 6px;
+  padding-right: 6px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  height: 100%;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.card-action-infos h2 {
+  font-family: $headers-font;
+  font-size: 15px;
+  color: $black;
+  margin-top: 6px;
+  margin-bottom: 2px;
+  line-height: 1.2;
+  border-bottom: 2px solid $orange;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+// div date butoir css
+.db-font {
+  padding-top: -1px;
+  margin: 0;
+  font-size: 16px;
+}
+.card-action-infos p {
+  font-family: $body-font;
+  font-size: 12px;
+  line-height: 1.4;
+  color: $gray;
+  margin-top: 1px;
+}
+
+.date-status {
+  display: flex;
+  justify-content: space-between; /* Espace entre les deux éléments */
+  align-items: center; /* Alignement vertical */
+  margin-top: 10px; /* Optionnel : espace au-dessus */
+}
+
+.card-stat-act {
+  font-size: 10px;
+}
