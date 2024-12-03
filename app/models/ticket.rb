@@ -1,6 +1,6 @@
 class Ticket < ApplicationRecord
   enum status: [ :nouveau, :'en cours', :résolu ]
-  enum priority: [ :'très basse', :basse, :moyenne, :haute, :'très haute' ]
+  enum priority: [ :basse, :moyenne, :haute ]
 
   belongs_to :user
   belongs_to :team
@@ -8,6 +8,9 @@ class Ticket < ApplicationRecord
   has_many :actions, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many_attached :photos
+
+  validates :title, presence: true, length: { maximum: 50, message: "Le titre du ticket ne peut pas dépasser 50 caractères." }
+  validates :category, presence: true
 
   include PgSearch::Model
 

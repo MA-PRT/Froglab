@@ -1,3 +1,4 @@
+// classes pour form new ticket
 #new-ticket-layout {
   h1 {
     color: white;
@@ -30,27 +31,27 @@
   border: 0;
 }
 
-.button-like-label {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #007bff; /* Couleur de fond (bleu) */
-  color: white; /* Couleur du texte */
-  border: none;
-  border-radius: 4px;
-  text-align: center;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer; /* Change le curseur en mode "pointer" */
-  text-decoration: none;
-  transition: background-color 0.3s, transform 0.2s; /* Animation sur le hover */
+// classes pour form new comment
+
+.comment-form {
+  display: flex;
 }
 
-.button-like-label:hover {
-  background-color: #0056b3; /* Couleur de fond plus sombre au survol */
-  transform: scale(1.05); /* Légère mise en avant */
+.comment-input {
+
 }
 
-.button-like-label:active {
-  background-color: #003f7f; /* Couleur encore plus sombre lorsque cliqué */
-  transform: scale(0.95); /* Légère réduction pour un effet de clic */
+.comment-submit {
+  width: 65px;
+  height: 65px;
+  font-size: 24px;
+  border: solid 1px #dadcdf;
+  border-radius: 0px 2px 2px 0px;
+}
+
+#comment-error {
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 0.875em;
+  color: var(--bs-form-invalid-color);
 }
