@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   authenticated :user do
-    root to: "communications#index", as: :user_root
+    root to: "pages#homepage", as: :user_root
   end
 
   unauthenticated :user do
