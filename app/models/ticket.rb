@@ -12,7 +12,7 @@ class Ticket < ApplicationRecord
   include PgSearch::Model
 
   pg_search_scope :ticket_search,
-    against: [:title, :content, :category],
+    against: [:title, :content, :category, :status],
     associated_against: {
       actions: [:title, :due_date, :status, :content, :user_id]
     },
@@ -24,8 +24,8 @@ class Ticket < ApplicationRecord
   # def self.search_with_enum(query)
   #   if query.present?
   #     # Vérifiez si le mot correspond à un enum
-  #     priority_values = priorities.to_s.keys
-  #     status_values = statuses.to_s.keys
+  #     priority_values = priorities.keys
+  #     status_values = statuses.keys
 
   #     # Cherchez les valeurs enum correspondantes
   #     enum_conditions = []
