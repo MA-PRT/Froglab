@@ -56,23 +56,26 @@
   <% if params[:query].present? %>
   <% @actions.each do |action| %>
 
-      <div class="d-flex-ticket rounded-4">
-        <%= link_to ticket_path(action.ticket), class: "" do%>
+      <div class="d-flex card-action">
+        <%= link_to ticket_path(action.ticket), class: "w-100" do%>
         <%# <%= cl_image_tag booking.rocket.photos.first.key%>
-        <div class="card-product-infos">
-          <h2 class=""><%= action.title %></h2>
-          <p class="">Due date : <strong><%= action.due_date %></strong></p>
-          <div class="d-flex justify-content-between align-items-center ticket-show-p-font">
-            <% if action.ticket.status == "nouveau" %>
-              <span class="card-tkt-show-new rounded-pill align-items-center"><%= action.ticket.status.capitalize %></span>
-            <% elsif action.ticket.status == "en cours" %>
-              <span class="card-tkt-show-ongoing rounded-pill align-items-center"><%= action.ticket.status.capitalize  %></span>
-            <% elsif action.ticket.status == "résolu" %>
-              <span class="card-tkt-show-solved rounded-pill align-items-center"><%= action.ticket.status.capitalize %></span>
-            <% end %>
-          </div>
-          <p><strong><%= action.ticket.team.name %></strong></p>
-          <p class=""><strong>Owner: </strong><%= action.user.first_name %> <%= action.user.last_name %></p>
+        <div class="card-action-infos">
+          <h2 class=""><strong><%= action.ticket.team.name %></strong> : <%= action.title %></h2>
+
+            <div class="date-status">
+              <p class="db-font">Date butoir : <strong><%= action.due_date.strftime("%d-%m-%Y") %></strong></p>
+                <div class="d-flex justify-content-around align-items-center d-inline">
+                  <% if action.ticket.status == "nouveau" %>
+                    <span class="card-act-new rounded-pill card-stat-act"><%= action.ticket.status.capitalize %></span>
+                  <% elsif action.ticket.status == "en cours" %>
+                    <span class="card-act-encours rounded-pill card-stat-act"><%= action.ticket.status.capitalize  %></span>
+                  <% elsif action.ticket.status == "résolu" %>
+                    <span class="card-act-resolu rounded-pill card-stat-act"><%= action.ticket.status.capitalize %></span>
+                  <% end %>
+                </div>
+            </div>
+
+          <p class="">Responsable : <strong><%= action.user.first_name %> <%= action.user.last_name %></strong></p>
         </div>
         <% end %>
       </div>
@@ -80,25 +83,28 @@
   <% end %>
   <% else %>
 
+  <%# code pour l'index des actions %>
   <% @tickets.each do |ticket| %>
     <% ticket.actions.each do |action| %>
-      <div class="d-flex-ticket rounded-4">
-        <%= link_to ticket_path(action.ticket), class: "" do%>
+      <div class="d-flex card-action">
+        <%= link_to ticket_path(action.ticket), class: "w-100" do%>
         <%# <%= cl_image_tag booking.rocket.photos.first.key%>
-        <div class="card-product-infos">
-          <h2 class=""><%= action.title %></h2>
-          <p class="">Due date : <strong><%= action.due_date %></strong></p>
-          <div class="d-flex justify-content-between align-items-center ticket-show-p-font">
-            <% if ticket.status == "nouveau" %>
-              <span class="card-tkt-show-new rounded-pill align-items-center"><%= ticket.status.capitalize %></span>
-            <% elsif ticket.status == "en cours" %>
-              <span class="card-tkt-show-ongoing rounded-pill align-items-center"><%= ticket.status.capitalize %></span>
-            <% elsif ticket.status == "résolu" %>
-              <span class="card-tkt-show-solved rounded-pill align-items-center"><%= ticket.status.capitalize %></span>
-            <% end %>
-          </div>
-          <p><strong><%= action.ticket.team.name %></strong></p>
-          <p class=""><strong>Owner: </strong><%= action.user.first_name %> <%= action.user.last_name %></p>
+        <div class="card-action-infos">
+          <h2 class=""><strong><%= action.ticket.team.name %></strong> : <%= action.title %></h2>
+            <div class="date-status">
+              <p class="db-font">Date butoir : <strong><%= action.due_date.strftime("%d-%m-%Y") %></strong></p>
+                <div class="d-flex justify-content-around align-items-center d-inline">
+                  <% if ticket.status == "nouveau" %>
+                    <span class="card-act-new rounded-pill card-stat-act"><%= ticket.status.capitalize %></span>
+                  <% elsif ticket.status == "en cours" %>
+                    <span class="card-act-encours rounded-pill card-stat-act"><%= ticket.status.capitalize %></span>
+                  <% elsif ticket.status == "résolu" %>
+                    <span class="card-act-resolu rounded-pill card-stat-act"><%= ticket.status.capitalize %></span>
+                  <% end %>
+                </div>
+            </div>
+
+          <p class="">Responsable : <strong><%= action.user.first_name %> <%= action.user.last_name %></strong></p>
         </div>
         <% end %>
       </div>
