@@ -79,7 +79,7 @@ puts "Creating tickets..."
 ticket1 = Ticket.create!(
   title: "Zone de chargement non clairement identifiée",
   content: "Je ne comprends pas à quelle porte les camions pour le chargement des pièces sont censés arriver. Il n'y a plus de balisage, ce qui crée de la confusion et des retards.",
-  priority: 2,
+  priority: 1,
   category: "Process",
   status: 1,
   user: user_logistic_operator_3,
@@ -90,7 +90,7 @@ ticket1 = Ticket.create!(
 ticket2 = Ticket.create!(
   title: "Formation des nouveaux employés incomplète",
   content: "Les nouveaux employés n'ont pas reçu la formation complète sur le tri et l'étiquetage des colis, causant des erreurs dans les envois et des retards.",
-  priority: 1,
+  priority: 0,
   category: "Lean",
   status: 1,
   user: user_rh_manager,
@@ -101,7 +101,7 @@ ticket2 = Ticket.create!(
 ticket3 = Ticket.create!(
   title: "Scanner pour les colis défectueux",
   content: "Plusieurs scanners pour lire les codes-barres des colis sont en panne, ralentissant considérablement le traitement des commandes et augmentant les erreurs.",
-  priority: 3,
+  priority: 2,
   category: "Tools",
   status: 1,
   user: user_logistic_operator_4,
@@ -112,7 +112,7 @@ ticket3 = Ticket.create!(
 ticket4 = Ticket.create!(
   title: "Emballages endommagés fréquemment",
   content: "De nombreux colis arrivent avec des emballages endommagés, ce qui nuit à la satisfaction client et provoque des retours fréquents.",
-  priority: 2,
+  priority: 1,
   category: "Quality",
   status: 1,
   user: user_sav_employee_1,
@@ -123,7 +123,7 @@ ticket4 = Ticket.create!(
 ticket5 = Ticket.create!(
   title: "Problème de maintenance sur le tapis roulant",
   content: "Le tapis roulant principal de la zone d'expédition tombe régulièrement en panne, provoquant des arrêts prolongés et des retards dans la préparation des commandes.",
-  priority: 4,
+  priority: 2,
   category: "Maintenance",
   status: 2,
   user: user_logistic_operator_5,
@@ -133,7 +133,7 @@ ticket5 = Ticket.create!(
 ticket6 = Ticket.create!(
   title: "Protocole de sécurité incendie obsolète",
   content: "Le protocole actuel pour les exercices d'incendie n'est plus à jour, ce qui pourrait entraîner des risques en cas d'incident réel. Il faut le réviser rapidement.",
-  priority: 3,
+  priority: 2,
   category: "Security",
   status: 0,
   user: user_logistic_operator_3,
@@ -143,7 +143,7 @@ ticket6 = Ticket.create!(
 ticket7 = Ticket.create!(
   title: "ticket comex",
   content: "Le protocole comex doit être revu",
-  priority: 3,
+  priority: 1,
   category: "Management",
   status: 0,
   user: user_rh_manager,
