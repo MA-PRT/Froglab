@@ -28,4 +28,47 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  activerecord:
+    attributes:
+      ticket:
+        title: ""
+        category: ""
+      communication:
+        title: ""
+        content: ""
+        category: ""
+      comment:
+        content: ""
+      action:
+        title: ""
+        due_date: ""
+        user: ""
+    errors:
+      models:
+        ticket:
+          attributes:
+            title:
+              blank: "Le titre est obligatoire."
+              too_long: "Le titre ne peut pas dépasser %{count} caractères."
+            category:
+              blank: "La catégorie est obligatoire."
+        communication:
+          attributes:
+            title:
+              blank: "Le titre est obligatoire."
+            content:
+              blank: "Le contenu est obligatoire."
+            category:
+              blank: "La catégorie est obligatoire."
+        comment:
+          attributes:
+            content:
+              blank: "Le contenu est obligatoire."
+        action:
+          attributes:
+            title:
+              blank: "Le titre est obligatoire."
+            due_date:
+              blank: "La date limite est obligatoire."
+            user:
+              blank: "Un utilisateur est obligatoire."

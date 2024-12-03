@@ -86,22 +86,14 @@
 
     <%# Priority point%>
     <div class="mt-2 mb-2 d-flex justify-content-between align-items-center">
-    <!-- Priority Text -->
-    <p class="ticket-show-p-font mb-0">
-      Prioritée :
-      <span style="color: <%= progress_point(@ticket.priority)[:color] %>">
-        <%= @ticket.priority.humanize %>
-      </span>
-    </p>
-
-    <!-- Progress Point -->
-    <span class="progress-point"
-      style="background-color: <%= progress_point(@ticket.priority)[:color] %>;
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        display: inline-block;">
-    </span>
+    
+     <!-- Priority Text -->
+      <p class="ticket-show-p-font mb-0">
+        Priorité :
+        <span style="color: <%= progress_point(@ticket.priority)[:color] %>">
+          <%= @ticket.priority.humanize %>
+        </span>
+      </p>
     </div>
 
     <%# Status %>
