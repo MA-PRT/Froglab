@@ -4,4 +4,10 @@ class Communication < ApplicationRecord
   has_many :teams, through: :team_communications
   has_many_attached :photos
 
+  include PgSearch::Model
+  pg_search_scope :communication_search,
+  against: [:title, :category, :content],
+  using: {
+    tsearch: { prefix: true }
+  }
 end
