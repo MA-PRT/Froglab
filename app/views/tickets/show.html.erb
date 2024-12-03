@@ -154,12 +154,10 @@
 
             <!-- Rounded switch -->
             <div data-controller="switch-status" data-switch-status-id-value=<%= action.id %>>
-              <span data-switch-status-target="status" class="<%= action.status == 'en cours' ? 'card-tkt-show-encours-txt' : 'card-tkt-show-resolu-txt' %> ticket-show-p-font">
-                <%= action.status.capitalize %>
-              </span>
-              <label class="switch">
-                <input type="checkbox" data-action="change->switch-status#switch" <%= 'checked' if action.status == 'complétée' %>>
-                <span class="slider round"></span>
+              <input type="checkbox" data-action="change->switch-status#switch" id="toggle_<%= action.id %>" class="toggleCheckbox" <%= 'checked' if action.status == 'complétée' %> />
+              <label for="toggle_<%= action.id %>" class='toggleContainer'>
+                <div>En cours</div>
+                <div>Complété</div>
               </label>
             </div>
           </div>
