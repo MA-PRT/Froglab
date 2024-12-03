@@ -4,21 +4,56 @@ class TicketsController < ApplicationController
 
   def index
     if params[:query].present?
-      @tickets = Ticket.ticket_search(params[:query])
+      query = params[:query].downcase
+      keywords = query.split # On sépare les mots-clés (ex. "nouveau haute")
+
+      @tickets = Ticket.all
+
+      keywords.each do |keyword|
+        # Vérifie si le mot-clé correspond à un statut
+        if Ticket.statuses.keys.include?(keyword)
+          @tickets = @tickets.where(status: Ticket.statuses[keyword])
+        # Vérifie si le mot-clé correspond à une priorité
+        elsif Ticket.priorities.keys.include?(keyword)
+          @tickets = @tickets.where(priority: Ticket.priorities[keyword])
+        else
+          # Applique la recherche textuelle pour les autres cas
+          @tickets = @tickets.merge(Ticket.ticket_search(keyword))
+        end
+      end
     else
       @tickets = Ticket.all
-    end
 
-    # Tri personnalisé par status et date de création
-    @tickets = @tickets.order(
-      Arel.sql("CASE
-        WHEN status = '0' THEN 1
-        WHEN status = '1' THEN 2
-        WHEN status = '2' THEN 3
-        ELSE 4 END"),
-      created_at: :desc
-    )
+      # Tri personnalisé par statut et date de création
+      @tickets = @tickets.order(
+        Arel.sql("CASE
+          WHEN status = '0' THEN 1
+          WHEN status = '1' THEN 2
+          WHEN status = '2' THEN 3
+          ELSE 4 END"),
+          created_at: :desc
+        )
+    end 
   end
+
+
+  # def index
+  #   if params[:query].present?
+  #     @tickets = Ticket.ticket_search(params[:query])
+  #   else
+  #     @tickets = Ticket.all
+  #   end
+
+  #   # Tri personnalisé par status et date de création
+  #   @tickets = @tickets.order(
+  #     Arel.sql("CASE
+  #       WHEN status = '0' THEN 1
+  #       WHEN status = '1' THEN 2
+  #       WHEN status = '2' THEN 3
+  #       ELSE 4 END"),
+  #     created_at: :desc
+  #   )
+  # end
 
   def show
     @action = Action.new
