@@ -3,9 +3,21 @@ class TicketsController < ApplicationController
   before_action :set_ticket, only: %i[show destroy]
 
   def index
-    @tickets = Ticket.all
-    @communications = Communication.all
-    @actions = Action.all
+    if params[:query].present?
+      @tickets = Ticket.ticket_search(params[:query])
+    else
+      @tickets = Ticket.all
+    end
+
+    # Tri personnalisé par status et date de création
+    @tickets = @tickets.order(
+      Arel.sql("CASE
+        WHEN status = '0' THEN 1
+        WHEN status = '1' THEN 2
+        WHEN status = '2' THEN 3
+        ELSE 4 END"),
+      created_at: :desc
+    )
   end
 
   def show

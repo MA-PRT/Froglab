@@ -1,0 +1,93 @@
+.container-home {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 40%;
+}
+
+/* Wrapper styling */
+#wrapper-home {
+  display: flex; /* Utilise Flexbox */
+  align-items: center; /* Aligne verticalement */
+  justify-content: center; /* Centre horizontalement */
+  gap: 10px; /* Espace entre le logo et le texte */
+  margin: 4px;
+}
+
+/* Logo styling */
+.logo {
+  height: 50px; /* Ajustez la taille selon vos besoins */
+  width: auto;
+}
+
+/* Text wrapper */
+.text-wrapper {
+  display: flex;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+h1 {
+  padding-top: 1em;
+}
+
+/* Initial state of letters */
+.letter {
+  display: inline-block;
+  transform: translateX(100%);
+  opacity: 0;
+  animation: slideIn 0.5s ease forwards;
+  font-family: $body-font;
+}
+
+/* Animation */
+@keyframes slideIn {
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Delay for each letter */
+.letter:nth-child(1) {
+  animation-delay: 0s;
+}
+.letter:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.letter:nth-child(3) {
+  animation-delay: 0.6s;
+}
+.letter:nth-child(4) {
+  animation-delay: 0.9s;
+}
+.letter:nth-child(5) {
+  animation-delay: 1.2s;
+}
+.letter:nth-child(6) {
+  animation-delay: 1.5s;
+}
+.letter:nth-child(7) {
+  animation-delay: 1.8s;
+}
+
+// couleur du bouton homepage
+.btn-orange {
+  font-family: $body-font;
+  height: 30px;
+  background-color: #F96D00; /* Couleur orange */
+  color: #fff; /* Texte en blanc */
+  border: none; /* Supprimer la bordure par défaut */
+  border-radius: 50px; /* Arrondir les bords */
+  padding: 10px 10px; /* Ajuster les espaces intérieurs */
+  font-size: 1.2rem; /* Ajuster la taille de la police */
+  text-transform: uppercase; /* Mettre le texte en majuscules */
+  cursor: pointer; /* Curseur en forme de main */
+  transition: background-color 0.3s ease-in-out; /* Animation sur le hover */
+}
+
+.btn-orange:hover {
+  background-color: #E55C00; /* Couleur légèrement plus foncée au survol */
+}

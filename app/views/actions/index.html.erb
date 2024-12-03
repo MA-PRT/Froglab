@@ -1,3 +1,74 @@
+<nav class="row navbar navbar-dark bg-dark text-bg-dark border-bottom">
+  <!-- Navbar content -->
+  <div class=" col-1 logo-container">
+    <%= image_tag "froglab_logo_2.png", class:"logo" %>
+  </div>
+  <div class="col-6">
+    <%= form_with url: actions_path, method: :get, local: true do |f| %>
+      <%= f.text_field :query, placeholder: "Recherchez...", class: "bg-dark rounded-pill font-navbar search-bar"%>
+  </div>
+    <button type="submit" class="me-3 col-3 bg-dark rounded-pill font-navbar search-button">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </button>
+    <%# <%= f.submit "Q", class: "bg-dark rounded-pill font-navbar search-button"%>
+  <% end %>
+</nav>
+
+<div class="container-index mt-3">
+
+  <% if params[:query].present? %>
+  <% @actions.each do |action| %>
+
+      <div class="d-flex-ticket rounded-4">
+        <%= link_to ticket_path(action.ticket), class: "" do%>
+        <%# <%= cl_image_tag booking.rocket.photos.first.key%>
+        <div class="card-product-infos">
+          <h2 class=""><%= action.title %></h2>
+          <p class="">Due date : <strong><%= action.due_date %></strong></p>
+          <div class="d-flex justify-content-between align-items-center ticket-show-p-font">
+            <% if action.ticket.status == "nouveau" %>
+              <span class="card-tkt-show-new rounded-pill align-items-center"><%= action.ticket.status.capitalize %></span>
+            <% elsif action.ticket.status == "en cours" %>
+              <span class="card-tkt-show-ongoing rounded-pill align-items-center"><%= action.ticket.status.capitalize  %></span>
+            <% elsif action.ticket.status == "résolu" %>
+              <span class="card-tkt-show-solved rounded-pill align-items-center"><%= action.ticket.status.capitalize %></span>
+            <% end %>
+          </div>
+          <p><strong><%= action.ticket.team.name %></strong></p>
+          <p class=""><strong>Owner: </strong><%= action.user.first_name %> <%= action.user.last_name %></p>
+        </div>
+        <% end %>
+      </div>
+
+  <% end %>
+  <% else %>
+
+  <% @tickets.each do |ticket| %>
+    <% ticket.actions.each do |action| %>
+      <div class="d-flex-ticket rounded-4">
+        <%= link_to ticket_path(action.ticket), class: "" do%>
+        <%# <%= cl_image_tag booking.rocket.photos.first.key%>
+        <div class="card-product-infos">
+          <h2 class=""><%= action.title %></h2>
+          <p class="">Due date : <strong><%= action.due_date %></strong></p>
+          <div class="d-flex justify-content-between align-items-center ticket-show-p-font">
+            <% if ticket.status == "nouveau" %>
+              <span class="card-tkt-show-new rounded-pill align-items-center"><%= ticket.status.capitalize %></span>
+            <% elsif ticket.status == "en cours" %>
+              <span class="card-tkt-show-ongoing rounded-pill align-items-center"><%= ticket.status.capitalize %></span>
+            <% elsif ticket.status == "résolu" %>
+              <span class="card-tkt-show-solved rounded-pill align-items-center"><%= ticket.status.capitalize %></span>
+            <% end %>
+          </div>
+          <p><strong><%= action.ticket.team.name %></strong></p>
+          <p class=""><strong>Owner: </strong><%= action.user.first_name %> <%= action.user.last_name %></p>
+        </div>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+  <% end %>
+</div>
 
 <div class=" row fixed-bottom justify-content-center border-top text-bg-dark">
   <div class=" btn-align btn col-2">
@@ -25,36 +96,9 @@
     <% end %>
   </div>
   <div class="btn-align btn col-2">
-    <%= link_to home_path, class: "btn-link" do%>
+    <%= link_to menu_path, class: "btn-link" do%>
       <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#F2F2F2"><path d="M160-269.23v-40h640v40H160ZM160-460v-40h640v40H160Zm0-190.77v-40h640v40H160Z"/></svg>
       <p class="ticket-show-p-font ">Menu</p>
     <% end %>
   </div>
-</div>
-
-<div class="container-index mt-3">
-  <% @tickets.each do |ticket| %>
-    <% ticket.actions.each do |action| %>
-      <div class="d-flex-ticket rounded-4">
-        <%= link_to ticket_path(action.ticket), class: "" do%>
-        <%# <%= cl_image_tag booking.rocket.photos.first.key%>
-        <div class="card-product-infos">
-          <h2 class=""><%= action.title %></h2>
-          <p class="">Due date : <strong><%= action.due_date %></strong></p>
-          <div class="d-flex justify-content-between align-items-center ticket-show-p-font">
-            <% if ticket.status == "nouveau" %>
-              <span class="card-tkt-show-new rounded-pill align-items-center"><%= ticket.status.capitalize %></span>
-            <% elsif ticket.status == "en cours" %>
-              <span class="card-tkt-show-ongoing rounded-pill align-items-center"><%= ticket.status.capitalize %></span>
-            <% elsif ticket.status == "résolu" %>
-              <span class="card-tkt-show-solved rounded-pill align-items-center"><%= ticket.status.capitalize %></span>
-            <% end %>
-          </div>
-          <p><strong><%= action.ticket.team.name %></strong></p>
-          <p class=""><strong>Owner: </strong><%= action.user.first_name %> <%= action.user.last_name %></p>
-        </div>
-        <% end %>
-      </div>
-    <% end %>
-  <% end %>
 </div>
