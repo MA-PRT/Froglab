@@ -71,132 +71,55 @@
 
 }
 
-
-/* The switch - the box around the slider */
-.switch {
+// Switch button new possibility
+.toggleContainer {
   position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-}
-
-/* Hide default HTML checkbox */
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-/* The slider */
-.slider {
-  position: absolute;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: fit-content;
+  border: 3px solid #343434;
+  border-radius: 20px;
+  background: #343434;
+  font-weight: bold;
+  color: #343434;
   cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgb(226, 226, 1);
-  -webkit-transition: .4s;
-  transition: .4s;
 }
-
-.slider:before {
+.toggleContainer::before {
+  content: '';
   position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+  width: 50%;
+  height: 100%;
+  left: 0%;
+  border-radius:20px;
+  background: orange;
+  transition: all 0.3s;
 }
 
-input:checked + .slider {
-  background-color: #6EC207;
+.toggleCheckbox:checked + .toggleContainer::before {
+  left: 50%;
+  background: green;
 }
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #6EC207;
+.toggleContainer div {
+  padding: 6px;
+  text-align: center;
+  z-index: 1;
 }
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
+.toggleCheckbox {
+  display: none;
 }
-
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
+.toggleCheckbox:checked + .toggleContainer div:first-child{
+  color: white;
+  transition: color 0.3s;
 }
-
-.slider.round:before {
-  border-radius: 50%;
+.toggleCheckbox:checked + .toggleContainer div:last-child{
+  color: white;
+  transition: color 0.3s;
 }
-
-.container-index {
-  padding: 0; /* Supprime les marges internes */
-  padding-bottom: 100px; /* Ajustez la valeur en fonction de la hauteur de la navbar */
+.toggleCheckbox + .toggleContainer div:first-child{
+  color: white;
+  transition: color 0.3s;
 }
-
-
-// // Switch button new possibility
-// .toggleContainer {
-//   position: relative;
-//   display: grid;
-//   grid-template-columns: repeat(2, 1fr);
-//   width: 120px; /* Augmentez la taille pour plus de lisibilité */
-//   height: 40px; /* Hauteur plus grande pour un meilleur confort visuel */
-//   border: 3px solid #343434;
-//   border-radius: 20px;
-//   background: #343434;
-//   font-weight: bold;
-//   color: #343434;
-//   cursor: pointer;
-// }
-
-// .toggleContainer::before {
-//   content: '';
-//   position: absolute;
-//   width: 50%;
-//   height: 100%;
-//   left: 0;
-//   border-radius: 20px;
-//   background: white;
-//   transition: all 0.3s;
-// }
-
-// .toggleCheckbox:checked + .toggleContainer::before {
-//   left: 50%;
-// }
-
-// .toggleContainer div {
-//   padding: 6px;
-//   text-align: center;
-//   z-index: 1;
-// }
-
-// .toggleCheckbox {
-//   display: none;
-// }
-
-// .toggleCheckbox:checked + .toggleContainer div:first-child {
-//   color: white;
-//   transition: color 0.3s;
-// }
-
-// .toggleCheckbox:checked + .toggleContainer div:last-child {
-//   color: #343434;
-//   transition: color 0.3s;
-// }
-
-// .toggleCheckbox + .toggleContainer div:first-child {
-//   color: #343434;
-//   transition: color 0.3s;
-// }
-
-// .toggleCheckbox + .toggleContainer div:last-child {
-//   color: white;
-//   transition: color 0.3s;
-// }
+.toggleCheckbox + .toggleContainer div:last-child{
+  color: white;
+  transition: color 0.3s;
+}
