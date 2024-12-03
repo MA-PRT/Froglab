@@ -22,6 +22,9 @@ class TicketsController < ApplicationController
 
   def show
     @action = Action.new
+    @ticket = Ticket.includes(:comments).find(params[:id])
+    @comments = @ticket.comments.order(created_at: :desc)
+    @comment = Comment.new
   end
 
   def new

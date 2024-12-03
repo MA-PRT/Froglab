@@ -17,11 +17,13 @@ Rails.application.routes.draw do
 
   resources :tickets do
     resources :actions, only: [ :create ]
+    resources :comments, only: [:new, :create]
   end
 
   patch 'tickets/update_status/:id', to: 'actions#update_status', as: 'update_status'
 
   resources :actions, only: [ :index, :edit, :update, :destroy ]
+  resources :comments, only: [:destroy]
 
   get "/home", to: "pages#homepage", as: 'home'
   get "/menu", to: "pages#home", as: "menu"
