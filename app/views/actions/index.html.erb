@@ -1,18 +1,55 @@
-<nav class="row navbar navbar-dark bg-dark text-bg-dark border-bottom">
+<%# <nav class="row navbar navbar-dark bg-dark text-bg-dark border-bottom">
   <!-- Navbar content -->
   <div class=" col-1 logo-container">
     <%= image_tag "froglab_logo_2.png", class:"logo" %>
-  </div>
-  <div class="col-6">
-    <%= form_with url: actions_path, method: :get, local: true do |f| %>
-      <%= f.text_field :query, placeholder: "Recherchez...", class: "bg-dark rounded-pill font-navbar search-bar"%>
-  </div>
-    <button type="submit" class="me-3 col-3 bg-dark rounded-pill font-navbar search-button">
-      <i class="fa-solid fa-magnifying-glass"></i>
-    </button>
+  <%# </div> %>
+  <%# <div class="col-6"> %>
+    <%# <%= form_with url: actions_path, method: :get, local: true do |f| %>
+      <%# <%= f.text_field :query, placeholder: "Recherchez...", class: "bg-dark rounded-pill font-navbar search-bar"%>
+  <%# </div> %>
+    <%# <button type="submit" class="me-3 col-3 bg-dark rounded-pill font-navbar search-button"> %>
+      <%# <i class="fa-solid fa-magnifying-glass"></i> %>
+    <%# </button> %>
     <%# <%= f.submit "Q", class: "bg-dark rounded-pill font-navbar search-button"%>
-  <% end %>
+  <%# <% end %>
+<%# </nav> %>
+
+<nav class="row navbar mt-1 navbar-dark bg-dark text-bg-dark border-bottom">
+  <!-- Navbar content -->
+
+  <%# 1st row of the navbar  %>
+  <div class="d-flex justify-content-between align-items-center">
+
+    <%# logo froglab  %>
+    <div class="logo-container">
+      <%= image_tag "froglab_logo_2.png", class:"logo"%>
+    </div>
+
+    <%# barre de recherche  %>
+    <div class="">
+      <%= form_with url: actions_path, method: :get, local: true do |f| %>
+        <%= f.text_field :query, placeholder: "Recherchez...", class: "bg-dark rounded-pill font-navbar search-bar"%>
+    </div>
+
+    <div class="d-flex align-items-center">
+      <%# boutons search %>
+      <button type="submit" class=" bg-dark rounded-pill font-navbar search-button">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+      <% end %>
+
+      <%# bouton refresh  %>
+      <button class="bg-dark rounded-pill font-navbar refresh-button">
+        <%= link_to actions_path, class: "d-flex align-items-center justify-content-center text-decoration-none" do %>
+          <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#F2F2F2">
+            <path d="M515.38-349.23v-47.69h149.23v47.69H515.38ZM579.23-140v-53.85h-63.85v-47.69h63.85v-53.85h47.69V-140h-47.69Zm91.54-53.85v-47.69H820v47.69H670.77Zm37.69-101.54v-155.38h47.69v53.85H820v47.69h-63.85v53.84h-47.69Zm99.46-272.3h-62.23q-27.54-84.54-99.57-138.43Q574.08-760 480-760q-117 0-198.5 81.5T200-480q0 78.15 38.46 141.81 38.46 63.65 101.54 99.34V-360h60v220H180v-60h113.23q-69.3-45-111.27-118.27Q140-391.54 140-480q0-70.8 26.77-132.63t72.77-107.83q46-46 107.83-72.77Q409.2-820 480-820q118.61 0 208.81 71.42Q779-677.15 807.92-567.69Z"/>
+          </svg>
+        <% end %>
+      </button>
+    </div>
+  </div>
 </nav>
+
 
 <div class="container-index mt-3">
 
