@@ -154,7 +154,7 @@
 
             <!-- Rounded switch -->
             <div data-controller="switch-status" data-switch-status-id-value=<%= action.id %>>
-              <input type="checkbox" data-action="change->switch-status#switch" id="toggle_<%= action.id %>" class="toggleCheckbox" <%= 'checked' if action.status == 'complétée' %> />
+              <input type="checkbox" data-switch-status-target="status" data-action="change->switch-status#switch" id="toggle_<%= action.id %>" class="toggleCheckbox" <%= 'checked' if action.status == 'complétée' %> />
               <label for="toggle_<%= action.id %>" class='toggleContainer'>
                 <div>En cours</div>
                 <div>Complété</div>
