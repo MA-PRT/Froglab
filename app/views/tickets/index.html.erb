@@ -74,7 +74,7 @@
         </button>
         <ul class="mr-3 dropdown-menu btn-dropdown btn-filter">
           <li class="pb-1 text-center">nouveau</li>
-          <li class="pb-1 text-center">en cours</li>
+          <li class="pb-1 text-center">actif</li>
           <li class="pb-1 text-center">résolu  </li>
         </ul>
       </div>
@@ -106,7 +106,7 @@
           <div class="d-flex justify-content-between align-items-center ">
             <% if ticket.status == "nouveau" %>
               <span class="card-index-nouveau rounded-pill align-items-center"><%= ticket.status.capitalize %></span>
-            <% elsif ticket.status == "en cours" %>
+            <% elsif ticket.status == "actif" %>
               <span class="card-index-encours rounded-pill align-items-center"><%= ticket.status.capitalize %></span>
             <% elsif ticket.status == "résolu" %>
               <span class="card-index-resolu rounded-pill align-items-center"><%= ticket.status.capitalize %></span>

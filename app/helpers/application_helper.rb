@@ -12,7 +12,7 @@ module ApplicationHelper
 
 
   # def render_status_switch(action)
-  #   status_class = action.status == "en cours" ? "card-tkt-show-encours-txt" : "card-tkt-show-resolu-txt"
+  #   status_class = action.status == "actif" ? "card-tkt-show-encours-txt" : "card-tkt-show-resolu-txt"
   #   action.status == "complétée" ? "checked" : ""
 
   #   content_tag(:span, action.status.capitalize, class: status_class, data: { switch_status_target: "status" }) +

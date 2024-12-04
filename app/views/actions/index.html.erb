@@ -67,7 +67,7 @@
                 <div class="d-flex justify-content-around align-items-center d-inline">
                   <% if action.ticket.status == "nouveau" %>
                     <span class="card-act-new rounded-pill card-stat-act"><%= action.ticket.status.capitalize %></span>
-                  <% elsif action.ticket.status == "en cours" %>
+                  <% elsif action.ticket.status == "actif" %>
                     <span class="card-act-encours rounded-pill card-stat-act"><%= action.ticket.status.capitalize  %></span>
                   <% elsif action.ticket.status == "résolu" %>
                     <span class="card-act-resolu rounded-pill card-stat-act"><%= action.ticket.status.capitalize %></span>
@@ -96,7 +96,7 @@
                 <div class="d-flex justify-content-around align-items-center d-inline">
                   <% if ticket.status == "nouveau" %>
                     <span class="card-act-new rounded-pill card-stat-act"><%= ticket.status.capitalize %></span>
-                  <% elsif ticket.status == "en cours" %>
+                  <% elsif ticket.status == "actif" %>
                     <span class="card-act-encours rounded-pill card-stat-act"><%= ticket.status.capitalize %></span>
                   <% elsif ticket.status == "résolu" %>
                     <span class="card-act-resolu rounded-pill card-stat-act"><%= ticket.status.capitalize %></span>
