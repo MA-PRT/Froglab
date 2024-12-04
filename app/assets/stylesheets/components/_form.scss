@@ -1,9 +1,11 @@
 // classes pour form new ticket
 #new-ticket-layout {
   h1 {
-    color: white;
+    color: $black;
   }
+  margin-top: 20%;
 }
+
 
 #photos-buttons {
   width: 100%;
@@ -11,10 +13,10 @@
 
 .new-form {
   color: #000000;
-  background-color: white;
+  background-color: $white;
   border-radius: 4px;
   .form-control {
-    background-color: white;
+    background-color: $white;
     color: #808080;
   }
 }
@@ -35,10 +37,6 @@
 
 .comment-form {
   display: flex;
-}
-
-.comment-input {
-
 }
 
 .comment-submit {
