@@ -106,7 +106,7 @@
       <% end %>
     </div>
     <%# Actions %>
-    <div>
+    <div class="mt-3">
       <br>
       <h5 class="mb-3 ticket-show-h-font"><strong>Actions à mettre en place :</strong></h5>
       <% @ticket.actions.each do |action| %>
@@ -139,7 +139,7 @@
       <% end %>
     </div>
     <%# Comments %>
-    <div>
+    <div class="mt-5">
       <%# Section écriture commentaire %>
       <h5 class="mt-3 mb-3 ticket-show-h-font mb-0"><strong>Commentaires :</strong></h5>
       <%= simple_form_for [@ticket, @comment], defaults: { wrapper: false } do |f| %>
