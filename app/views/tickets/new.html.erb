@@ -1,12 +1,10 @@
-<div class="container mt-3" id="new-ticket-layout">
-
-
+<div class="container" id="new-ticket-layout">
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="card shadow-sm">
         <div class="card-body new-form" data-controller="photos">
           <div class="d-flex justify-content-between">
-            <h1 class="text-center mb-4" style="color: black;"><strong>Création de ticket</strong></h1>
+            <h1 class="text-center mb-4"><strong>Création de ticket</strong></h1>
             <a href="<%= tickets_path %>" class="btn-close mt-1" aria-label="Close"></a>
           </div>
           <%= simple_form_for @ticket, html: { multipart: true, data: { controller: "photos" } } do |f| %>
@@ -44,7 +42,11 @@
                           input_html: { class: 'form-control' } %>
             </div>
             <div class="mb-3">
-              <%= f.input :category, label: 'Catégorie', input_html: { class: 'form-control' } %>
+                <%= f.input :category,
+                            label: 'Catégorie',
+                            collection: Ticket::CATEGORIES,
+                            include_blank: '-- Sélectionner une catégorie --',
+                            input_html: { class: 'form-control' } %>
             </div>
             <div class="d-grid">
               <%= button_tag raw('<i class="fa-regular fa-circle-check" style="color: white;"></i> Valider le ticket'),
