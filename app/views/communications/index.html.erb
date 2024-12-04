@@ -57,9 +57,9 @@
         </h2>
           <div class="d-font">
             <% if communication.created_at == communication.updated_at %>
-              <p><%= communication.created_at.strftime("%d-%m-%Y %H:%M:%S") %></p>
+              <p><%= communication.created_at.strftime("%d-%m-%Y") %></p>
             <% else %>
-              <p><%= communication.created_at.strftime("%d-%m-%Y %H:%M:%S") %></p>
+              <p><%= communication.created_at.strftime("%d-%m-%Y") %></p>
               <p><strong>Dernière modification :</strong> <%= communication.updated_at.strftime("%d-%m-%Y %H:%M:%S") %></p>
             <% end %>
           </div>

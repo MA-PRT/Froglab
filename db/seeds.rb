@@ -145,6 +145,7 @@ ticket5 = Ticket.create!(
   category: "Maintenance",
   status: 2,
   user: user_logistic_operator_5,
+  manager: user_logistic_manager,
   team: logistique
 )
 
@@ -247,7 +248,7 @@ Action.create!(
 )
 
 Action.create!(
-  title: "action 1 du ticket 7",
+  title: "Analyser les incohérences du protocole Comex et proposer des ajustements",
   due_date: Date.today + 3, # Échéance modérée
   status: 0,
   content: "",
@@ -256,7 +257,7 @@ Action.create!(
 )
 
 Action.create!(
-  title: "action 2 du ticket 7",
+  title: "Créer un rapport détaillé sur l’état actuel des tickets Comex et les actions correctives nécessaires.",
   due_date: Date.today + 3, # Échéance modérée
   status: 1,
   content: "",
