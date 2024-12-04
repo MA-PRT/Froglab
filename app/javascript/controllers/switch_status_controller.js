@@ -13,7 +13,7 @@ export default class extends Controller {
     const currentStatus = e.currentTarget.checked
     console.log(currentStatus)
 
-    this.statusTarget.innerHTML = currentStatus ? "complétée" : "en cours"
+    this.statusTarget.innerHTML = currentStatus ? "complétée" : "active"
 
     fetch(`update_status/${this.idValue}?status=${currentStatus ? 1 : 0}`,{
       method: 'PATCH',
