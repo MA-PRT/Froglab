@@ -25,37 +25,33 @@
 
 .card-action-infos h2 {
   font-family: $headers-font;
-  font-size: 15px;
+  font-size: 16px;
   color: $black;
-  margin-top: 6px;
-  margin-bottom: 2px;
+  margin-top: 10px;
+  margin-bottom: 5px;
   line-height: 1.2;
   border-bottom: 2px solid $orange;
-  padding-top: 2px;
-  padding-bottom: 2px;
+  padding-bottom: 3px;
+  min-height: 40px;
 }
 
-// div date butoir css
-.db-font {
-  padding-top: -1px;
-  margin: 0;
-  font-size: 16px;
+.card-action-inline {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 15px;
 }
+
 .card-action-infos p {
   font-family: $body-font;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.4;
   color: $gray;
-  margin-top: 1px;
-}
-
-.date-status {
-  display: flex;
-  justify-content: space-between; /* Espace entre les deux éléments */
-  align-items: center; /* Alignement vertical */
-  margin-top: 10px; /* Optionnel : espace au-dessus */
+  margin: 0;
+  padding-top: 2px;
 }
 
 .card-stat-act {
-  font-size: 10px;
+  font-size: 14px;
 }
