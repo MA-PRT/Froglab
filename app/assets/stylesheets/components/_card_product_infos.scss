@@ -106,7 +106,7 @@ a {
   box-shadow: 3px 3px 0px rgba(249, 109, 0, 2);
   display: flex;
   align-items: center;
-  margin-top: 12px;
+  margin-top: 16px;
   border-radius: 4px;
 
   img {
@@ -129,6 +129,7 @@ a {
 }
 
 .card-index-infos h2 {
+  padding-top: 3px;
   font-size: 16px;
   display: -webkit-box;         /* Active le mode boîte flexible */
   -webkit-line-clamp: 2;        /* Limite à 2 lignes */
@@ -161,4 +162,10 @@ a {
 
 .card-index-resolu {
   background-color: green;
+}
+
+.index-manager {
+  font-size: 14px;
+  color: $gray;
+  display: inline;
 }
