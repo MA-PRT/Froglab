@@ -81,16 +81,18 @@
     </div>
 
     <div class="modal fade" id="<%= communication.id %>-communication" data-bs-backdrop="true" data-bs-keyboard="true" tabindex="-1" aria-labelledby="<%= communication.id %>-communicationLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content bg-white text-dark">
-          <div class="modal-header">
-            <h1 class="modal-title fs-1" id="<%= communication.id %>-communicationLabel"><%= communication.title %></h1>
+          <div class="modal-header ">
+            <h1 class="modal-title fs-1" id="<%= communication.id %>-communicationLabel"><strong><%= communication.category.capitalize %></strong> : <%= communication.title %></h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
                 <div class="modal-body">
-                  <p class="fs-4"><%= communication.category.capitalize %></p>
                   <p class="text-start"><%= communication.content.capitalize %></p>
+                  <div class="modal-footer no-border-top">
+                    <button type="button" class="btn btn-warning text-decoration-none text-light" data-bs-dismiss="modal">Fermer</button>
                 </div>
+              </div>
           </div>
         </div>
       </div>
