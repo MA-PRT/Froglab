@@ -50,7 +50,7 @@
   </div>
 </nav>
 
-
+ <%# code pour l'index des actions %>
 <div class="container-index mt-3">
 
   <% if params[:query].present? %>
@@ -62,20 +62,23 @@
         <div class="card-action-infos">
           <h2 class=""><strong><%= action.ticket.team.name %></strong> : <%= action.title %></h2>
 
-            <div class="date-status">
-              <p class="db-font">Date butoir : <strong><%= action.due_date.strftime("%d-%m-%Y") %></strong></p>
-                <div class="d-flex justify-content-around align-items-center d-inline">
-                  <% if action.ticket.status == "nouveau" %>
+            <div class="d-flex flex-row justify-content-between align-items-end">
+
+              <p class=""><i class="fa-solid fa-calendar-xmark me-1"></i><strong><%= action.due_date.strftime("%d-%m-%Y") %></strong></p>
+                <p class=""><i class="fa-solid fa-user me-1"></i><strong><%= action.user.first_name %> <%= action.user.last_name %></strong></p>
+
+                  <% if action.ticket.status == "nouvelle" %>
                     <span class="card-act-new rounded-pill card-stat-act"><%= action.ticket.status.capitalize %></span>
-                  <% elsif action.ticket.status == "en cours" %>
+                  <% elsif action.ticket.status == "active" %>
                     <span class="card-act-encours rounded-pill card-stat-act"><%= action.ticket.status.capitalize  %></span>
-                  <% elsif action.ticket.status == "résolu" %>
+                  <% elsif action.ticket.status == "complétée" %>
                     <span class="card-act-resolu rounded-pill card-stat-act"><%= action.ticket.status.capitalize %></span>
                   <% end %>
+
                 </div>
             </div>
 
-          <p class="">Responsable : <strong><%= action.user.first_name %> <%= action.user.last_name %></strong></p>
+
         </div>
         <% end %>
       </div>
@@ -83,7 +86,6 @@
   <% end %>
   <% else %>
 
-  <%# code pour l'index des actions %>
   <% @tickets.each do |ticket| %>
     <% ticket.actions.each do |action| %>
       <div class="d-flex card-action">
@@ -91,26 +93,29 @@
         <%# <%= cl_image_tag booking.rocket.photos.first.key%>
         <div class="card-action-infos">
           <h2 class=""><strong><%= action.ticket.team.name %></strong> : <%= action.title %></h2>
-            <div class="date-status">
-              <p class="db-font">Date butoir : <strong><%= action.due_date.strftime("%d-%m-%Y") %></strong></p>
-                <div class="d-flex justify-content-around align-items-center d-inline">
-                  <% if ticket.status == "nouveau" %>
-                    <span class="card-act-new rounded-pill card-stat-act"><%= ticket.status.capitalize %></span>
-                  <% elsif ticket.status == "en cours" %>
-                    <span class="card-act-encours rounded-pill card-stat-act"><%= ticket.status.capitalize %></span>
-                  <% elsif ticket.status == "résolu" %>
-                    <span class="card-act-resolu rounded-pill card-stat-act"><%= ticket.status.capitalize %></span>
-                  <% end %>
-                </div>
-            </div>
 
-          <p class="">Responsable : <strong><%= action.user.first_name %> <%= action.user.last_name %></strong></p>
-        </div>
+
+            <div class="card-action-inline pt-2">
+              <p class=""><i class="fa-solid fa-calendar-xmark me-1"></i><strong><%= action.due_date.strftime("%d-%m-%Y") %></strong></p>
+
+                <p class=""><i class="fa-solid fa-user me-1"></i><strong><%= action.user.first_name %> <%= action.user.last_name %></strong></p>
+
+                  <% if action.status == "active" %>
+                    <span class="card-act-encours rounded-pill card-stat-act"><%= action.status.capitalize %></span>
+                  <% elsif action.status == "complétée" %>
+                    <span class="card-act-resolu rounded-pill card-stat-act"><%= action.status.capitalize %></span>
+                  <% end %>
+
+              </div>
+
+
+
+          </div>
         <% end %>
       </div>
     <% end %>
   <% end %>
-  <% end %>
+<% end %>
 </div>
 
 <div class=" row fixed-bottom justify-content-center border-top text-bg-dark">

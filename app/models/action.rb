@@ -1,5 +1,5 @@
 class Action < ApplicationRecord
-  enum status: [:'en cours', :complétée]
+  enum status: [:active, :complétée]
   belongs_to :user
   belongs_to :ticket
 

@@ -55,7 +55,7 @@
         <img src="<%= url_for(@ticket.photos.first) %>" class="img-show-modal-ticket" alt= "<% @ticket.title %> photo">
       </div>
       <div class="modal-footer no-border-top">
-        <button type="button" class="btn btn-warning text-decoration-underline text-light" data-bs-dismiss="modal">Fermer</button>
+        <button type="button" class="btn btn-warning text-decoration-none text-light" data-bs-dismiss="modal">Fermer</button>
       </div>
     </div>
   </div>
@@ -70,7 +70,7 @@
       <div class="ticket-show-p-font">
         <% if @ticket.status == "nouveau" %>
             <span class="card-tkt-show-nouveau rounded-pill align-items-center"><%= @ticket.status.capitalize %></span>
-          <% elsif @ticket.status == "en cours" %>
+          <% elsif @ticket.status == "actif" %>
             <span class="card-tkt-show-encours rounded-pill align-items-center"><%= @ticket.status.capitalize %></span>
           <% elsif @ticket.status == "résolu" %>
             <span class="card-tkt-show-resolu rounded-pill align-items-center"><%= @ticket.status.capitalize %></span>
@@ -128,8 +128,8 @@
               <div data-controller="switch-status" data-switch-status-id-value=<%= action.id %>>
                 <input type="checkbox" data-switch-status-target="status" data-action="change->switch-status#switch" id="toggle_<%= action.id %>" class="toggleCheckbox" <%= 'checked' if action.status == 'complétée' %> />
                 <label for="toggle_<%= action.id %>" class='toggleContainer'>
-                  <div>En cours</div>
-                  <div>Complété</div>
+                  <div>active</div>
+                  <div>complétée</div>
                 </label>
               </div>
               <%# Fin Rounded toggle %>

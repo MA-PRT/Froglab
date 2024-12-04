@@ -106,7 +106,7 @@ a {
   box-shadow: 3px 3px 0px rgba(249, 109, 0, 2);
   display: flex;
   align-items: center;
-  margin-top: 12px;
+  margin-top: 16px;
   border-radius: 4px;
 
   img {
@@ -129,24 +129,23 @@ a {
 }
 
 .card-index-infos h2 {
-  font-size: 14px;
+  padding-top: 3px;
+  font-size: 16px;
+  display: -webkit-box;         /* Active le mode boîte flexible */
+  -webkit-line-clamp: 2;        /* Limite à 2 lignes */
+  -webkit-box-orient: vertical; /* Définit l'orientation verticale */
+  overflow: hidden;             /* Masque le texte dépassant */
+  text-overflow: ellipsis;      /* Ajoute "..." pour le texte tronqué */
   color: $black;
   margin: 0;
   line-height: 1.2;
 }
 
-.card-index-infos p {
-  font-size: 12px;
-  line-height: 1.4;
-  color: $gray;
-  margin: 0;
-}
-
 .card-index-nouveau,
 .card-index-encours,
 .card-index-resolu {
-  font-size: 12px;
-  padding: 0.2em 0.6em;
+  font-size: 14px;
+  padding: 0.1em 0.4em;
   border-radius: 12px;
   white-space: nowrap;
   color: $white;
@@ -163,4 +162,10 @@ a {
 
 .card-index-resolu {
   background-color: green;
+}
+
+.index-manager {
+  font-size: 14px;
+  color: $gray;
+  display: inline;
 }

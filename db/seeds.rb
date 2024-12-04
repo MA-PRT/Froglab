@@ -145,6 +145,7 @@ ticket5 = Ticket.create!(
   category: "Maintenance",
   status: 2,
   user: user_logistic_operator_5,
+  manager: user_logistic_manager,
   team: logistique
 )
 
@@ -158,7 +159,7 @@ ticket6 = Ticket.create!(
   title: "Protocole de sécurité incendie obsolète",
   content: "Le protocole actuel pour les exercices d'incendie n'est plus à jour, ce qui pourrait entraîner des risques en cas d'incident réel. Il faut le réviser rapidement.",
   priority: 2,
-  category: "Securité",
+  category: "Sécurité",
   status: 0,
   user: user_logistic_operator_3,
   team: logistique

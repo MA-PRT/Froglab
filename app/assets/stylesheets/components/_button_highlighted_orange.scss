@@ -42,7 +42,8 @@
   transition: color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 
   &:hover {
-    color: darken($orange, 10%);
-    box-shadow: 0px 3px 4px rgba($orange, 0.7);
+    color: #228B22;
+    border-color: #228B22;
+    box-shadow: 0px 3px 4px rgba(34, 139, 34, 0.7);
   }
 }

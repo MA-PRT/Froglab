@@ -6,14 +6,14 @@ export default class extends Controller {
   static values = { id: Number }
 
   connect() {
-    console.log(this.idValue)
+    console.log("Controller stimulus connected -","ActionID:", this.idValue)
   }
 
   switch(e) {
     const currentStatus = e.currentTarget.checked
-    console.log(currentStatus)
+    console.log("ActionID", this.idValue, "Status", currentStatus)
 
-    this.statusTarget.innerHTML = currentStatus ? "complétée" : "en cours"
+    this.statusTarget.innerHTML = currentStatus ? "complétée" : "active"
 
     fetch(`update_status/${this.idValue}?status=${currentStatus ? 1 : 0}`,{
       method: 'PATCH',
@@ -22,13 +22,14 @@ export default class extends Controller {
         "X-CSRF-Token": document.querySelector("meta[name='csrf-token']").content
       },
     })
-
-    if (currentStatus === false) {
-      this.statusTarget.classList.remove("card-tkt-show-resolu-txt");
-      this.statusTarget.classList.add("card-tkt-show-encours-txt");
-    } else if (currentStatus === true) {
-      this.statusTarget.classList.remove("card-tkt-show-encours-txt");
-      this.statusTarget.classList.add("card-tkt-show-resolu-txt");
-    }
     }
 }
+
+// Ancienne version du switch / Change d ecouleur en fonction du status
+// if (currentStatus === false) {
+//   this.statusTarget.classList.remove("card-tkt-show-resolu-txt");
+//   this.statusTarget.classList.add("card-tkt-show-encours-txt");
+// } else if (currentStatus === true) {
+//   this.statusTarget.classList.remove("card-tkt-show-encours-txt");
+//   this.statusTarget.classList.add("card-tkt-show-resolu-txt");
+// }
