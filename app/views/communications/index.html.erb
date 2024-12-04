@@ -80,17 +80,24 @@
       </div>
     </div>
 
-    <div class="modal fade" id="<%= communication.id %>-communication" data-bs-backdrop="true" data-bs-keyboard="true" tabindex="-1" aria-labelledby="<%= communication.id %>-communicationLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content bg-white text-dark">
-          <div class="modal-header">
-            <h1 class="modal-title fs-1" id="<%= communication.id %>-communicationLabel"><%= communication.title %></h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<%# modal %>
+
+    <div class="modal fade" id="<%= communication.id %>-communication" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="<%= communication.id %>-communicationLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark pt-4">
+          <div class="modal-com-x" data-bs-dismiss="modal" aria-label="Close"><i class=""></i></div>
+                <div class="modal-header bg-white mt-5">
+                  <div class="text-dark">
+                    <h1 class="modal-title fs-1 mdb" id="<%= communication.id %>-communicationLabel"><strong><%= communication.category.capitalize %></strong> : <%= communication.title %></h1>
+                      <div class="modal-body bg-white text-dark">
+                        <p class="text-start"><%= communication.content.capitalize %></p>
+                        </div>
+                      </div>
+                    </div>
+                  <div class="modal-footer no-border-top">
+                <button type="button" class="btn btn-warning text-decoration-none text-light mt-1 mb-1" data-bs-dismiss="modal">Fermer</button>
               </div>
-                <div class="modal-body">
-                  <p class="fs-4"><%= communication.category.capitalize %></p>
-                  <p class="text-start"><%= communication.content.capitalize %></p>
-                </div>
+
           </div>
         </div>
       </div>
