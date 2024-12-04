@@ -145,6 +145,7 @@ ticket5 = Ticket.create!(
   category: "Maintenance",
   status: 2,
   user: user_logistic_operator_5,
+  manager: user_logistic_manager,
   team: logistique
 )
 
