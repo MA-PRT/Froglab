@@ -111,13 +111,7 @@
             <% elsif ticket.status == "résolu" %>
               <span class="card-index-resolu rounded-pill align-items-center"><%= ticket.status.capitalize %></span>
             <% end %>
-            <span class="progress-point me-1"
-              style="background-color: <%= progress_point(ticket.priority)[:color] %>;
-                width: 15px;
-                height: 15px;
-                border-radius: 50%;
-                display: inline-block;">
-            </span>
+            <p><i class="fa-solid fa-triangle-exclamation fa-2xl" style="color: <%= progress_point(ticket.priority)[:color] %>"></i></p>
           </div>
           <p class=""><%= ticket.content.truncate(40) %></p>
         </div>
