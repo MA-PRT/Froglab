@@ -10,18 +10,26 @@
     </div>
 
     <%# barre de recherche  %>
-    <div class="">
-      <%= form_with url: tickets_path, method: :get, local: true do |f| %>
-        <%= f.text_field :query, placeholder: "Recherchez...", class: "bg-dark rounded-pill font-navbar search-bar"%>
+    <div class="d-flex align-items-center position-relative">
+      <%= form_with url: tickets_path, method: :get, local: true, class: "d-flex" do |f| %>
+        <%= f.text_field :query, placeholder: "", class: "bg-dark font-navbar search-bar"%>
+        <%# logo loupe %>
+        <div class="position-absolute top-50 start-0 translate-middle ms-4">
+          <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#F2F2F2">
+            <path d="M779.38-153.85 528.92-404.31q-30 25.54-69 39.54t-78.38 14q-96.1 0-162.67-66.53-66.56-66.53-66.56-162.57 0-96.05 66.53-162.71 66.53-66.65 162.57-66.65 96.05 0 162.71 66.56Q610.77-676.1 610.77-580q0 41.69-14.77 80.69t-38.77 66.69l250.46 250.47-28.31 28.3ZM381.54-390.77q79.61 0 134.42-54.81 54.81-54.8 54.81-134.42 0-79.62-54.81-134.42-54.81-54.81-134.42-54.81-79.62 0-134.42 54.81-54.81 54.8-54.81 134.42 0 79.62 54.81 134.42 54.8 54.81 134.42 54.81Z"/>
+          </svg>
+        </div>
+        <%# logo send %>
+
+        <button type="submit" class="bg-dark font-navbar search-button d-flex align-items-center">
+          <svg class="ms-2" xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#F2F2F2">
+            <path d="M140-190v-580l688.46 290L140-190Zm60-90 474-200-474-200v147.69L416.92-480 200-427.69V-280Zm0 0v-400 400Z"/>
+          </svg>
+        </button>
+      <% end %>
     </div>
 
     <div class="d-flex align-items-center">
-      <%# bouton search %>
-      <button type="submit" class=" bg-dark rounded-pill font-navbar search-button">
-        <i class="fa-solid fa-magnifying-glass"></i>
-      </button>
-      <% end %>
-
       <%# bouton refresh  %>
       <button class="bg-dark rounded-pill font-navbar refresh-button">
         <%= link_to tickets_path, class: "d-flex align-items-center justify-content-center text-decoration-none" do %>
@@ -32,64 +40,6 @@
       </button>
     </div>
   </div>
-
-  <%# bouttons de filtre
-
-  <div class=" mt-1 btn-group filter-bar-buttons">
-
-    <%# bouton status  %>
-    <%# <div> %>
-      <%# <button class="btn-filter bg-dark font-navbar btn-sm dropdown-toggle rounded-pill" type="button" data-bs-toggle="dropdown" aria-expanded="false"> %>
-        <%# <%= params[:status].present? ? Ticket.statuses.key(params[:status].to_i).capitalize : 'Statut' %>
-      <%# </button> %>
-      <%# <ul class="mr-3 dropdown-menu btn-dropdown"> %>
-        <%# <% Ticket.statuses.keys.each do |status| %>
-          <%# <li class="pb-1 text-center"> %>
-            <%# <%= link_to status.capitalize, tickets_path(query: params[:query], status: Ticket.statuses[status], priority: params[:priority]), class: "dropdown-item" %>
-          <%# </li> %>
-        <%# <% end %>
-      <%# </ul> %>
-    <%# </div> %>
-
-    <%# bouton priorité  %>
-    <%# <div> %>
-      <%# <button class="btn-filter bg-dark font-navbar btn-sm dropdown-toggle rounded-pill" type="button" data-bs-toggle="dropdown" aria-expanded="false"> %>
-        <%# <%= params[:priority].present? ? Ticket.priorities.key(params[:priority].to_i).capitalize : 'Priorité' %>
-      <%# </button> %>
-      <%# <ul class="dropdown-menu btn-dropdown"> %>
-        <%# <% Ticket.priorities.keys.each do |priority| %>
-          <%# <li class="pb-1 text-center"> %>
-            <%# <%= link_to priority.capitalize, tickets_path(query: params[:query], status: params[:status], priority: Ticket.priorities[priority]), class: "dropdown-item" %>
-          <%# </li> %>
-        <%# <% end %>
-      <%# </ul> %>
-    <%# </div> %>
-  <%# </div> %>
-
-  <%# <div class="row ms-1 mt-1">
-    <div class="btn-group col-9 filter-bar-buttons">
-      <div>
-        <button class="btn-filter bg-dark font-navbar btn-sm dropdown-toggle rounded-pill" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Statut
-        </button>
-        <ul class="mr-3 dropdown-menu btn-dropdown btn-filter">
-          <li class="pb-1 text-center">nouveau</li>
-          <li class="pb-1 text-center">actif</li>
-          <li class="pb-1 text-center">résolu  </li>
-        </ul>
-      </div>
-      <div>
-        <button class="btn-filter bg-dark font-navbar btn-sm dropdown-toggle rounded-pill" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Priorité
-        </button>
-        <ul class="dropdown-menu btn-dropdown btn-filter">
-          <li class="pb-1 text-center">haute  </li>
-          <li class="pb-1 text-center">moyenne</li>
-          <li class="pb-1 text-center">basse  </li>
-        </ul>
-      </div>
-    </div> %>
-
 </nav>
 
 <div class="container-index justify-content-center mt-3">
