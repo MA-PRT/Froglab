@@ -52,6 +52,7 @@ en:
               too_long: "Le titre ne peut pas dépasser %{count} caractères."
             category:
               blank: "La catégorie est obligatoire."
+              inclusion: "La catégorie est manquante."
         communication:
           attributes:
             title:
