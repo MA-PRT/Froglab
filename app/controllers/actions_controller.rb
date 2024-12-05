@@ -4,33 +4,20 @@ class ActionsController < ApplicationController
   before_action :set_ticket, only: %i[create]
 
   def index
+    @actions = Action.joins(:user, ticket: :team)
+                     .where(tickets: { team_id: current_user.teams.pluck(:id) })
+
     if params[:query].present?
-      @actions = Action.joins(:user).where(
-        "users.first_name ILIKE :query OR users.last_name ILIKE :query",
-        query: "%#{params[:query]}%"
+      status_value = Action.statuses[params[:query].downcase]
+      @actions = @actions.where(
+        "users.first_name ILIKE :query OR users.last_name ILIKE :query OR actions.title ILIKE :query OR actions.content ILIKE :query OR actions.status = :status_value",
+        query: "%#{params[:query]}%", status_value: status_value
       )
-    else
-      @actions = Action.all.order(created_at: :desc)
     end
-    # if params[:query].present?
-    #   query = params[:query].downcase
-    #   keywords = query.split # On sépare les mots-clés (ex. "nouveau haute")
 
-    # @tickets = Ticket.all
-
-    #   keywords.each do |keyword|
-    #     # Vérifie si le mot-clé correspond à un statut
-    #     if Action.statuses.keys.include?(keyword)
-    #       @actions = @actions.where(status: Action.statuses[keyword])
-    #     else
-    #       # Applique la recherche textuelle pour les autres cas
-    #       @actions = @actions.merge(Action.action_search(keyword))
-    #     end
-    #   end
-    # else
-    #   @actions = Action.all
-    # end
+    @actions = @actions.order(created_at: :desc)
   end
+
 
   def show
   end
