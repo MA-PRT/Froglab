@@ -85,23 +85,20 @@
         <%# <%= cl_image_tag booking.rocket.photos.first.key%>
         <div class="card-action-infos">
           <h2 class=""><strong><%= action.ticket.team.name %></strong> : <%= action.title %></h2>
-
-
             <div class="card-action-inline pt-2">
-              <p class=""><i class="fa-solid fa-calendar-xmark me-1"></i><strong><%= action.due_date.strftime("%d-%m-%Y") %></strong></p>
-
-                <p class=""><i class="fa-solid fa-user me-1"></i><strong><%= action.user.first_name %> <%= action.user.last_name %></strong></p>
-
-                  <% if action.status == "active" %>
-                    <span class="card-act-encours rounded-pill card-stat-act"><%= action.status.capitalize %></span>
-                  <% elsif action.status == "complétée" %>
-                    <span class="card-act-resolu rounded-pill card-stat-act"><%= action.status.capitalize %></span>
-                  <% end %>
-
+              <div class="d-flex justify-content-start align-items-center">
+                <i class="fa-solid fa-user me-1" id="colorgray-action"></i>
+                <p><strong><%= action.user.first_name.first %>. <%= action.user.last_name %></strong></p>
               </div>
-
-
-
+                <p class=""><i class="fa-solid fa-calendar-xmark me-1"></i><strong><%= action.due_date.strftime("%d-%m-%Y") %></strong></p>
+              <div class=" d-flex justify-content-end">
+                <% if action.status == "active" %>
+                  <span class="card-act-encours rounded-pill card-stat-act"><%= action.status.capitalize %></span>
+                <% elsif action.status == "complétée" %>
+                  <span class="card-act-resolu rounded-pill card-stat-act"><%= action.status.capitalize %></span>
+                <% end %>
+              </div>
+            </div>
           </div>
         <% end %>
       </div>

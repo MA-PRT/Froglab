@@ -5,7 +5,7 @@
   box-shadow: 3px 3px 0px rgba(249, 109, 0, 2);
   display: flex;
   align-items: center;
-  margin-top: 12px;
+  margin-top: 16px;
   border-radius: 4px;
 }
 
@@ -14,10 +14,10 @@
   flex-direction: column;
   justify-content: space-between;
   flex-grow: 1;
-  padding-left: 6px;
-  padding-right: 6px;
-  padding-top: 3px;
-  padding-bottom: 3px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 4px;
+  padding-bottom: 4px;
   height: 100%;
   box-sizing: border-box;
   width: 100%;
@@ -28,19 +28,19 @@
   font-size: 16px;
   color: $black;
   margin-top: 10px;
-  margin-bottom: 5px;
+  margin-bottom: 1px;
   line-height: 1.2;
-  border-bottom: 2px solid $orange;
-  padding-bottom: 3px;
+  border-bottom: 1px solid $orange;
   min-height: 40px;
 }
 
 .card-action-inline {
-  display: flex;
-  flex-direction: row-reverse;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   justify-content: space-between;
   align-items: baseline;
-  margin-bottom: 15px;
+  padding-bottom: 6px;
+  text-align: center;
 }
 
 .card-action-infos p {
@@ -54,4 +54,8 @@
 
 .card-stat-act {
   font-size: 14px;
+}
+
+#colorgray-action {
+  color: $gray;
 }

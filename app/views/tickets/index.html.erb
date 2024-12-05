@@ -64,7 +64,7 @@
           <div>
             <% if ticket.manager_id == nil %>
             <% else %>
-                <p class="index-manager"><i class="fa-solid fa-user-tie fa-xl" style="color: #1e2024;"></i> <%= ticket.manager.first_name.first %>. <%= ticket.manager.last_name %></p>
+                <p class="index-manager"><i class="fa-solid fa-user-tie fa-xl" style="color: #1e2024;"></i> <strong><%= ticket.manager.first_name.first %>. <%= ticket.manager.last_name %></strong></p>
             <% end %>
           </div>
             <p style="vertical-align: -0.5em;"><i class="fa-solid fa-circle-exclamation fa-xl" style="color: <%= progress_point(ticket.priority)[:color] %>; vertical-align: -0.5em;"></i></p>
