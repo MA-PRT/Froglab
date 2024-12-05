@@ -18,12 +18,12 @@
   width: 60px;
   height: 44px;
   border-color: $white;
-  margin-right: 10px;
   font-size: 27px;
+  border-radius: 0 50rem 50rem 0;
 }
 
 .refresh-button{
-  width: 60px;
+  width: 50px;
   height: 44px;
   border-color: $white;
   // margin-left: 12px;
@@ -35,10 +35,11 @@
 }
 
 .search-bar{
-  width: 160px ;
+  width: 170px ;
   height: 44px;
-  padding-left: 10px;
   font-size: 20px;
+  border-radius: 50rem 0 0 50rem;
+  padding-left: 40px;
 }
 
 .filter-logo {
@@ -68,4 +69,28 @@
 
 .filter-bar-buttons{
   margin-top: 3px;
+}
+
+
+
+button {
+  -webkit-appearance: auto;
+  border: 1px solid white;
+}
+
+input[name="query"] {
+  -webkit-appearance: auto;
+  border: 1px solid white;
+}
+
+.paper-plane-size {
+  font-size: 22px;
+  // margin-left: 8px;
+  opacity: 80%;
+}
+
+.fa-rotate-right{
+  font-size: 22px;
+  color: $white;
+  opacity: 80%;
 }

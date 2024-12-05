@@ -1,11 +1,10 @@
 .card-com {
   overflow: hidden;
-  height: 100px;
   background: $white;
   box-shadow: 3px 3px 0px rgba(249, 109, 0, 2);
   display: flex;
   align-items: center;
-  margin-top: 12px;
+  margin-top: 16px;
   border-radius: 4px;
 }
 
@@ -14,31 +13,45 @@
   flex-direction: column;
   justify-content: space-between;
   flex-grow: 1;
-  padding-left: 6px;
-  padding-right: 6px;
-  padding-top: 3px;
-  padding-bottom: 3px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 4px;
+  padding-bottom: 4px;
   height: 100%;
   box-sizing: border-box;
 }
 
 .card-com-infos h2 {
   font-family: $headers-font;
-  font-size: 18px;
+  font-size: 16px;
   color: $black;
   margin-bottom: 2px;
   line-height: 1.2;
-  border-bottom: 2px solid $orange;
+  border-bottom: 1px solid $orange;
+  padding-top: 2px;
   padding-bottom: 2px;
 }
 
 .d-font {
   padding-top: 5px;
 }
+
+.comm-sender-date {
+  margin-bottom: 12px;
+  font-size: 12px !important;
+  font-style: oblique;
+  color:rgb(155, 155, 155) !important;
+}
+
+
 .card-com-infos p {
   font-family: $body-font;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.4;
   color: $gray;
   margin-top: -5px;
+}
+
+.modal-comm-date {
+  font-size: 14px !important;
 }

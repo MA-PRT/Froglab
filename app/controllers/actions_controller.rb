@@ -12,6 +12,24 @@ class ActionsController < ApplicationController
     else
       @actions = Action.all.order(created_at: :desc)
     end
+    # if params[:query].present?
+    #   query = params[:query].downcase
+    #   keywords = query.split # On sépare les mots-clés (ex. "nouveau haute")
+
+    # @tickets = Ticket.all
+
+    #   keywords.each do |keyword|
+    #     # Vérifie si le mot-clé correspond à un statut
+    #     if Action.statuses.keys.include?(keyword)
+    #       @actions = @actions.where(status: Action.statuses[keyword])
+    #     else
+    #       # Applique la recherche textuelle pour les autres cas
+    #       @actions = @actions.merge(Action.action_search(keyword))
+    #     end
+    #   end
+    # else
+    #   @actions = Action.all
+    # end
   end
 
   def show

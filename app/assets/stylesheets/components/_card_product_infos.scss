@@ -120,10 +120,10 @@ a {
   flex-direction: column;
   justify-content: space-between;
   flex-grow: 1;
-  padding-left: 6px;
-  padding-right: 6px;
-  padding-top: 3px;
-  padding-bottom: 3px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 4px;
+  padding-bottom: 4px;
   height: 100%;
   box-sizing: border-box;
 }
@@ -144,12 +144,14 @@ a {
 .card-index-nouveau,
 .card-index-encours,
 .card-index-resolu {
-  font-size: 14px;
-  padding: 0.1em 0.4em;
-  border-radius: 12px;
-  white-space: nowrap;
+  font-weight: bold;
   color: $white;
+  padding: 0.2em 0.7em; /* Même logique pour garder une taille homogène */
+  margin: 0.1em;
   text-align: center;
+  display: inline-block;
+  white-space: nowrap;
+  font-size: 14px;
 }
 
 .card-index-nouveau {
