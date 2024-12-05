@@ -4,11 +4,13 @@ class ActionsController < ApplicationController
   before_action :set_ticket, only: %i[create]
 
   def index
-    @tickets = Ticket.where(team: current_user.teams)
     if params[:query].present?
-      @actions = Action.action_search(params[:query]).joins(:ticket).where(tickets: { team: current_user.teams })
+      @actions = Action.joins(:user).where(
+        "users.first_name ILIKE :query OR users.last_name ILIKE :query",
+        query: "%#{params[:query]}%"
+      )
     else
-      @tickets
+      @actions = Action.all.order(created_at: :desc)
     end
   end
 
