@@ -39,6 +39,7 @@
   height: 44px;
   font-size: 20px;
   border-radius: 50rem 0 0 50rem;
+  padding-left: 40px;
 }
 
 .filter-logo {
@@ -80,4 +81,16 @@ button {
 input[name="query"] {
   -webkit-appearance: auto;
   border: 1px solid white;
+}
+
+.paper-plane-size {
+  font-size: 22px;
+  // margin-left: 8px;
+  opacity: 80%;
+}
+
+.fa-rotate-right{
+  font-size: 22px;
+  color: $white;
+  opacity: 80%;
 }
