@@ -49,7 +49,7 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header no-border-bottom">
-        <div class="modal-ticket-close-x" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-close"></i></div>
+        <div class="modal-ticket-close-x" data-bs-dismiss="modal" aria-label="Close"></div>
       </div>
       <div class="modal-body p-0">
         <img src="<%= url_for(@ticket.photos.first) %>" class="img-show-modal-ticket" alt= "<% @ticket.title %> photo">
@@ -65,7 +65,7 @@
   <div class="container-index">
     <%# Ticket informations %>
     <%# Div Status & Priorité %>
-    <div class="d-flex justify-content-around align-items-center mt-3">
+    <div class="d-flex justify-content-between align-items-center mt-3">
       <%# Status %>
       <div class="ticket-show-p-font">
         <% if @ticket.status == "nouveau" %>
@@ -92,17 +92,17 @@
       <p class="ticket-show-p-font my-2"><%= @ticket.content %></p>
     <%# Utilisateur %>
     <% if @ticket.manager_id == nil %>
-        <p class="ticket-show-p-font mt-3 mb-2"><i class="fa-solid fa-user-tie fa-xl"></i> Non assigné</p>
+        <p class="ticket-show-p-font mt-3 mb-2"><i class="fa-solid fa-user-tie fa-lg"></i> Non assigné</p>
     <% else %>
-        <p class="ticket-show-p-font mt-3 mb-2"><i class="fa-solid fa-user-tie fa-xl"></i> <%= @ticket.manager.first_name %> <%= @ticket.manager.last_name %></p>
+        <p class="ticket-show-p-font mt-3 mb-2"><i class="fa-solid fa-user-tie fa-lg"></i> <%= @ticket.manager.first_name %> <%= @ticket.manager.last_name %></p>
     <% end %>
     <%# Creation date / Update date %>
     <div class="ticket-show-p-font">
       <% if @ticket.created_at == @ticket.updated_at %>
-        <p class="my-2"><i class="fa-regular fa-calendar fa-xl"></i><%= "   #{@ticket.created_at.strftime("%d/%m/%Y à %H:%M")}" %></p>
+        <p class="my-2"><i class="fa-regular fa-calendar fa-lg"></i><%= "   #{@ticket.created_at.strftime("%d/%m/%Y à %H:%M")}" %></p>
       <% else %>
-        <p class="my-2"><i class="fa-regular fa-calendar fa-xl"></i><%= "   #{@ticket.created_at.strftime("%d/%m/%Y à %H:%M")}" %></p>
-        <p class="my-2"><i class="fa-regular fa-calendar-plus fa-xl"></i><%= "   #{@ticket.updated_at.strftime("%d/%m/%Y à %H:%M")}" %></p>
+        <p class="my-2"><i class="fa-regular fa-calendar fa-lg"></i><%= "   #{@ticket.created_at.strftime("%d/%m/%Y à %H:%M")}" %></p>
+        <p class="my-2"><i class="fa-regular fa-calendar-plus fa-lg"></i><%= "   #{@ticket.updated_at.strftime("%d/%m/%Y à %H:%M")}" %></p>
       <% end %>
     </div>
     <%# Actions %>
