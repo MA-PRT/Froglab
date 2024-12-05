@@ -2,12 +2,12 @@
   <!-- Navbar content -->
 
   <%# 1st row of the navbar  %>
-  <div class="d-flex justify-content-between align-items-center">
+    <div class="d-flex justify-content-between align-items-center">
 
-    <%# logo froglab  %>
-    <div class="logo-container">
-      <%= image_tag "froglab_logo_2.png", class:"logo"%>
-    </div>
+      <%# logo froglab  %>
+        <div class="logo-container">
+          <%= image_tag "froglab_logo_2.png", class:"logo"%>
+        </div>
 
     <%# barre de recherche  %>
     <div class="d-flex align-items-center position-relative">
@@ -51,27 +51,21 @@
       <div class="d-flex card-action">
         <%= link_to ticket_path(action.ticket), class: "w-100" do%>
         <%# <%= cl_image_tag booking.rocket.photos.first.key%>
-        <div class="card-action-infos">
-          <h2 class=""><strong><%= action.ticket.team.name %></strong> : <%= action.title %></h2>
-
-            <div class="d-flex flex-row justify-content-between align-items-end">
-
-              <p class=""><i class="fa-solid fa-calendar-xmark me-1"></i><strong><%= action.due_date.strftime("%d-%m-%Y") %></strong></p>
-                <p class=""><i class="fa-solid fa-user me-1"></i><strong><%= action.user.first_name %> <%= action.user.last_name %></strong></p>
-
-                  <% if action.ticket.status == "nouvelle" %>
-                    <span class="card-act-new rounded-pill card-stat-act"><%= action.ticket.status.capitalize %></span>
-                  <% elsif action.ticket.status == "active" %>
-                    <span class="card-act-encours rounded-pill card-stat-act"><%= action.ticket.status.capitalize  %></span>
-                  <% elsif action.ticket.status == "complétée" %>
-                    <span class="card-act-resolu rounded-pill card-stat-act"><%= action.ticket.status.capitalize %></span>
-                  <% end %>
-
-                </div>
-            </div>
-
-
-        </div>
+          <div class="card-action-infos">
+            <h2 class=""><strong><%= action.ticket.team.name %></strong> : <%= action.title %></h2>
+              <div class="d-flex flex-row justify-content-between align-items-end">
+                <p class=""><i class="fa-solid fa-calendar-xmark me-1"></i><strong><%= action.due_date.strftime("%d-%m-%Y") %></strong></p>
+                  <p class=""><i class="fa-solid fa-user me-1"></i><strong><%= action.user.first_name %> <%= action.user.last_name %></strong></p>
+                    <% if action.ticket.status == "nouvelle" %>
+                      <span class="card-act-new rounded-pill card-stat-act"><%= action.ticket.status.capitalize %></span>
+                    <% elsif action.ticket.status == "active" %>
+                      <span class="card-act-encours rounded-pill card-stat-act"><%= action.ticket.status.capitalize  %></span>
+                    <% elsif action.ticket.status == "complétée" %>
+                      <span class="card-act-resolu rounded-pill card-stat-act"><%= action.ticket.status.capitalize %></span>
+                    <% end %>
+                  </div>
+              </div>
+          </div>
         <% end %>
       </div>
 
@@ -83,32 +77,24 @@
       <div class="d-flex card-action">
         <%= link_to ticket_path(action.ticket), class: "w-100" do%>
         <%# <%= cl_image_tag booking.rocket.photos.first.key%>
-        <div class="card-action-infos">
-          <h2 class=""><strong><%= action.ticket.team.name %></strong> : <%= action.title %></h2>
-
-
-            <div class="card-action-inline pt-2">
-              <p class=""><i class="fa-solid fa-calendar-xmark me-1"></i><strong><%= action.due_date.strftime("%d-%m-%Y") %></strong></p>
-
-                <p class=""><i class="fa-solid fa-user me-1"></i><strong><%= action.user.first_name %> <%= action.user.last_name %></strong></p>
-
-                  <% if action.status == "active" %>
-                    <span class="card-act-encours rounded-pill card-stat-act"><%= action.status.capitalize %></span>
-                  <% elsif action.status == "complétée" %>
-                    <span class="card-act-resolu rounded-pill card-stat-act"><%= action.status.capitalize %></span>
-                  <% end %>
-
+          <div class="card-action-infos">
+            <h2 class=""><strong><%= action.ticket.team.name %></strong> : <%= action.title %></h2>
+              <div class="card-action-inline pt-2">
+                <p class=""><i class="fa-solid fa-calendar-xmark me-1"></i><strong><%= action.due_date.strftime("%d-%m-%Y") %></strong></p>
+                  <p class=""><i class="fa-solid fa-user me-1"></i><strong><%= action.user.first_name %> <%= action.user.last_name %></strong></p>
+                    <% if action.status == "active" %>
+                      <span class="card-act-encours rounded-pill card-stat-act"><%= action.status.capitalize %></span>
+                    <% elsif action.status == "complétée" %>
+                      <span class="card-act-resolu rounded-pill card-stat-act"><%= action.status.capitalize %></span>
+                    <% end %>
+                </div>
               </div>
-
-
-
+            <% end %>
           </div>
         <% end %>
-      </div>
+      <% end %>
     <% end %>
-  <% end %>
-<% end %>
-</div>
+  </div>
 
 <div class=" row fixed-bottom justify-content-center border-top text-bg-dark">
   <div class=" btn-align btn col-2">
