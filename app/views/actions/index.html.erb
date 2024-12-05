@@ -1,13 +1,11 @@
 <nav class="row navbar mt-1 navbar-dark bg-dark text-bg-dark border-bottom">
   <!-- Navbar content -->
-
   <%# 1st row of the navbar  %>
-    <div class="d-flex justify-content-between align-items-center">
-
-      <%# logo froglab  %>
-        <div class="logo-container">
-          <%= image_tag "froglab_logo_2.png", class:"logo"%>
-        </div>
+  <div class="d-flex justify-content-between align-items-center">
+    <%# logo froglab  %>
+    <div class="logo-container">
+      <%= image_tag "froglab_logo_2.png", class:"logo"%>
+    </div>
 
     <%# barre de recherche  %>
     <div class="d-flex align-items-center position-relative">
@@ -20,11 +18,8 @@
           </svg>
         </div>
         <%# logo send %>
-
-        <button type="submit" class="bg-dark font-navbar search-button d-flex align-items-center">
-          <svg class="ms-2" xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#F2F2F2">
-            <path d="M140-190v-580l688.46 290L140-190Zm60-90 474-200-474-200v147.69L416.92-480 200-427.69V-280Zm0 0v-400 400Z"/>
-          </svg>
+        <button type="submit" class="bg-dark font-navbar search-button d-flex align-items-center justify-content-center">
+          <i class="fa-solid fa-paper-plane paper-plane-size" style="color: #f2f2f2;"></i>
         </button>
       <% end %>
     </div>
@@ -33,9 +28,7 @@
       <%# bouton refresh  %>
       <button class="bg-dark rounded-pill font-navbar refresh-button">
         <%= link_to actions_path, class: "d-flex align-items-center justify-content-center text-decoration-none" do %>
-          <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#F2F2F2">
-            <path d="M515.38-349.23v-47.69h149.23v47.69H515.38ZM579.23-140v-53.85h-63.85v-47.69h63.85v-53.85h47.69V-140h-47.69Zm91.54-53.85v-47.69H820v47.69H670.77Zm37.69-101.54v-155.38h47.69v53.85H820v47.69h-63.85v53.84h-47.69Zm99.46-272.3h-62.23q-27.54-84.54-99.57-138.43Q574.08-760 480-760q-117 0-198.5 81.5T200-480q0 78.15 38.46 141.81 38.46 63.65 101.54 99.34V-360h60v220H180v-60h113.23q-69.3-45-111.27-118.27Q140-391.54 140-480q0-70.8 26.77-132.63t72.77-107.83q46-46 107.83-72.77Q409.2-820 480-820q118.61 0 208.81 71.42Q779-677.15 807.92-567.69Z"/>
-          </svg>
+           <i class="fa-solid fa-rotate-right"></i>
         <% end %>
       </button>
     </div>
@@ -44,87 +37,70 @@
 
  <%# code pour l'index des actions %>
 <div class="container-index mt-3">
-
-  <% if params[:query].present? %>
   <% @actions.each do |action| %>
-
-      <div class="d-flex card-action">
-        <%= link_to ticket_path(action.ticket), class: "w-100" do%>
-        <%# <%= cl_image_tag booking.rocket.photos.first.key%>
-          <div class="card-action-infos">
-            <h2 class=""><strong><%= action.ticket.team.name %></strong> : <%= action.title %></h2>
-              <div class="d-flex flex-row justify-content-between align-items-end">
-                <p class=""><i class="fa-solid fa-calendar-xmark me-1"></i><strong><%= action.due_date.strftime("%d-%m-%Y") %></strong></p>
-                  <p class=""><i class="fa-solid fa-user me-1"></i><strong><%= action.user.first_name %> <%= action.user.last_name %></strong></p>
-                    <% if action.ticket.status == "nouvelle" %>
-                      <span class="card-act-new rounded-pill card-stat-act"><%= action.ticket.status.capitalize %></span>
-                    <% elsif action.ticket.status == "active" %>
-                      <span class="card-act-encours rounded-pill card-stat-act"><%= action.ticket.status.capitalize  %></span>
-                    <% elsif action.ticket.status == "complétée" %>
-                      <span class="card-act-resolu rounded-pill card-stat-act"><%= action.ticket.status.capitalize %></span>
-                    <% end %>
-                  </div>
-              </div>
+    <div class="d-flex card-action">
+      <%= link_to ticket_path(action.ticket), class: "w-100" do %>
+        <div class="card-action-infos">
+          <h2 class="">
+            <strong><%= action.ticket.team.name %></strong> : <%= action.title %>
+          </h2>
+          <div class="card-action-inline pt-2">
+            <div class="d-flex justify-content-start align-items-center">
+              <i class="fa-solid fa-user me-1" id="colorgray-action"></i>
+              <p><strong><%= action.user.first_name.first %>. <%= action.user.last_name %></strong></p>
+            </div>
+            <p class="">
+              <i class="fa-solid fa-calendar-xmark me-1"></i>
+              <strong><%= action.due_date.strftime("%d-%m-%Y") %></strong>
+            </p>
+            <div class="d-flex justify-content-end">
+              <% if action.status == "active" %>
+                <span class="card-act-encours rounded-pill card-stat-act">
+                  <%= action.status.capitalize %>
+                </span>
+              <% elsif action.status == "complétée" %>
+                <span class="card-act-resolu rounded-pill card-stat-act">
+                  <%= action.status.capitalize %>
+                </span>
+              <% end %>
+            </div>
           </div>
-        <% end %>
-      </div>
-
-  <% end %>
-  <% else %>
-
-  <% @tickets.each do |ticket| %>
-    <% ticket.actions.each do |action| %>
-      <div class="d-flex card-action">
-        <%= link_to ticket_path(action.ticket), class: "w-100" do%>
-        <%# <%= cl_image_tag booking.rocket.photos.first.key%>
-          <div class="card-action-infos">
-            <h2 class=""><strong><%= action.ticket.team.name %></strong> : <%= action.title %></h2>
-              <div class="card-action-inline pt-2">
-                <p class=""><i class="fa-solid fa-calendar-xmark me-1"></i><strong><%= action.due_date.strftime("%d-%m-%Y") %></strong></p>
-                  <p class=""><i class="fa-solid fa-user me-1"></i><strong><%= action.user.first_name %> <%= action.user.last_name %></strong></p>
-                    <% if action.status == "active" %>
-                      <span class="card-act-encours rounded-pill card-stat-act"><%= action.status.capitalize %></span>
-                    <% elsif action.status == "complétée" %>
-                      <span class="card-act-resolu rounded-pill card-stat-act"><%= action.status.capitalize %></span>
-                    <% end %>
-                </div>
-              </div>
-            <% end %>
-          </div>
-        <% end %>
+        </div>
       <% end %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
+</div>
+
 
 <div class=" row fixed-bottom justify-content-center border-top text-bg-dark">
   <div class=" btn-align btn col-2">
     <%= link_to communications_path, class: "btn-link" do%>
       <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#F2F2F2"><path d="M716.92-460v-40h129.23v40H716.92Zm43.39 258.46-103.39-77.54 24.93-31.69 103.38 77.54-24.92 31.69Zm-81.54-450.77L653.85-684l103.38-77.54 24.92 31.69-103.38 77.54ZM220-241.54v-152.31h-41.54q-26.84 0-45.73-18.88-18.88-18.89-18.88-45.73v-43.08q0-26.84 18.88-45.73 18.89-18.88 45.73-18.88h149.23L486.15-660v360l-158.46-93.85H260v152.31h-40Zm226.15-129.69v-217.54l-107.23 62.62H178.46q-9.23 0-16.92 7.69-7.69 7.69-7.69 16.92v43.08q0 9.23 7.69 16.92 7.69 7.69 16.92 7.69h160.46l107.23 62.62Zm110.77 6.77v-231.08q20.08 18.62 32.35 48.89 12.27 30.27 12.27 66.65 0 36.38-12.27 66.65-12.27 30.27-32.35 48.89ZM300-480Z"/></svg>
-      <p class="ticket-show-p-font ">Comms</p>
+      <p class="ticket-index-p-font ">Comms</p>
     <% end %>
   </div>
   <div class="btn-align btn col-2">
     <%= link_to tickets_path, class: "btn-link" do%>
       <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#F2F2F2"><path d="M200-120v-507.85q0-24.3 17.28-41.38 17.27-17.08 41.18-17.08h294.62q23.91 0 41.18 17.08 17.28 17.08 17.28 41.38V-120L406.15-226 200-120Zm33.85-56.79 172.3-87.75 171.54 87.75v-451.06q0-10.77-6.92-17.69-6.92-6.92-17.69-6.92H258.46q-10.77 0-17.69 6.92-6.92 6.92-6.92 17.69v451.06Zm492.3-85.36v-519.54q0-10.77-6.92-17.69-6.92-6.93-17.69-6.93H312.67v-33.84h388.87q23.91 0 41.18 17.07Q760-806 760-781.69v519.54h-33.85Zm-492.3-390.31H577.69 233.85Z"/></svg>
-      <p class="ticket-show-p-font ">Tickets</p>
+      <p class="ticket-index-p-font ">Tickets</p>
     <% end %>
   </div>
   <div class="btn-align btn col-2">
     <%= link_to new_ticket_path, class: "btn-link" do%>
       <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#F2F2F2"><path d="M240-180v-563.33q0-24.18 16.94-41.32 16.94-17.15 41.52-17.15h230.77v33.85H298.46q-9.23 0-16.92 7.69-7.69 7.7-7.69 16.93v510.71L480-320.72l206.15 88.1v-295.33H720V-180L480-283.08 240-180Zm33.85-587.95H529.23 273.85Zm412.3 166.16v-83.08h-83.07v-33.85h83.07v-83.08H720v83.08h83.08v33.85H720v83.08h-33.85Z"/></svg>
-      <p class="ticket-show-p-font ">Flag</p>
+      <p class="ticket-index-p-font ">Flag</p>
     <% end %>
   </div>
   <div class="btn-align btn col-2">
     <%= link_to actions_path, class: "btn-link" do%>
       <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#F96D00"><path d="M644.23-243.85 530.69-357.38l27.54-27.54 85 85 170-170 27.54 28.54-196.54 197.53Zm0-289.23L530.69-646.62l27.54-27.53 85 85 170-170 27.54 28.53-196.54 197.54ZM120-315.38v-40h320v40H120Zm0-289.24v-40h320v40H120Z"/></svg>
-      <p class="ticket-show-p-font text-warning">Actions</p>
+      <p class="ticket-index-p-font text-warning">Actions</p>
     <% end %>
   </div>
   <div class="btn-align btn col-2">
     <%= link_to menu_path, class: "btn-link" do%>
       <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#F2F2F2"><path d="M160-269.23v-40h640v40H160ZM160-460v-40h640v40H160Zm0-190.77v-40h640v40H160Z"/></svg>
-      <p class="ticket-show-p-font ">Menu</p>
+      <p class="ticket-index-p-font ">Menu</p>
     <% end %>
   </div>
 </div>
