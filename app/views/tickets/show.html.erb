@@ -48,7 +48,7 @@
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
-      <div class="modal-header no-border-bottom">
+      <div class="modal-header no-border-bottom pt-5">
         <div class="modal-ticket-close-x" data-bs-dismiss="modal" aria-label="Close"></div>
       </div>
       <div class="modal-body p-0">
@@ -64,8 +64,17 @@
 <div class="container">
   <div class="container-index">
     <%# Ticket informations %>
-    <%# Div Status & Priorité %>
-    <div class="d-flex justify-content-between align-items-center mt-3">
+    <%# Div Priorité & Status %>
+    <div class="d-flex justify-content-between align-items-center mt-3 mb-0">
+      <!-- Priority Text -->
+      <div>
+        <p class="ticket-show-p-font">
+          Priorité :
+          <span style="color: <%= progress_point(@ticket.priority)[:color] %>">
+            <%= @ticket.priority.humanize %>
+          </span>
+        </p>
+      </div>
       <%# Status %>
       <div class="ticket-show-p-font">
         <% if @ticket.status == "nouveau" %>
@@ -76,37 +85,44 @@
             <span class="card-tkt-show-resolu rounded-pill align-items-center"><%= @ticket.status.capitalize %></span>
         <% end %>
       </div>
-      <!-- Priority Text -->
-      <div>
-        <p class="ticket-show-p-font">
-          Priorité :
-          <span style="color: <%= progress_point(@ticket.priority)[:color] %>">
-            <%= @ticket.priority.humanize %>
-          </span>
-        </p>
-      </div>
     </div>
     <%# title & category && Content %>
-    <div class="card-body my-3">
+    <div class="card-body mt-4 mb-2">
       <h3 class="ticket-show-h-font my-2"><strong><%= @ticket.category %> : <%= @ticket.title %></strong></h3>
-      <p class="ticket-show-p-font my-2"><%= @ticket.content %></p>
-    <%# Utilisateur %>
-    <% if @ticket.manager_id == nil %>
-        <p class="ticket-show-p-font mt-3 mb-2"><i class="fa-solid fa-user-tie fa-lg"></i> Non assigné</p>
-    <% else %>
-        <p class="ticket-show-p-font mt-3 mb-2"><i class="fa-solid fa-user-tie fa-lg"></i> <%= @ticket.manager.first_name %> <%= @ticket.manager.last_name %></p>
-    <% end %>
-    <%# Creation date / Update date %>
-    <div class="ticket-show-p-font">
-      <% if @ticket.created_at == @ticket.updated_at %>
-        <p class="my-2"><i class="fa-regular fa-calendar fa-lg"></i><%= "   #{@ticket.created_at.strftime("%d/%m/%Y à %H:%M")}" %></p>
+      <p class="ticket-show-p-font mt-2 mb-4"><%= @ticket.content %></p>
+      <%# Utilisateur %>
+      <% if @ticket.manager_id == nil %>
+        <div class="d-flex justify-content-start align-items-center gap-3">
+          <i class="fa-solid fa-user-tie fa-lg text-ident-2px"></i>
+          <p class="ticket-show-p-font"> Non assigné</p>
+        </div>
       <% else %>
-        <p class="my-2"><i class="fa-regular fa-calendar fa-lg"></i><%= "   #{@ticket.created_at.strftime("%d/%m/%Y à %H:%M")}" %></p>
-        <p class="my-2"><i class="fa-regular fa-calendar-plus fa-lg"></i><%= "   #{@ticket.updated_at.strftime("%d/%m/%Y à %H:%M")}" %></p>
+        <div class="d-flex justify-content-start align-items-center gap-3">
+          <i class="fa-solid fa-user-tie fa-lg text-ident-2px"></i>
+          <p class="ticket-show-p-font"><%= @ticket.manager.first_name %> <%= @ticket.manager.last_name %></p>
+        </div>
       <% end %>
+      <%# Creation date / Update date %>
+      <div class="ticket-show-p-font">
+        <% if @ticket.created_at == @ticket.updated_at %>
+          <div class="d-flex justify-content-start align-items-center gap-3">
+            <i class="fa-regular fa-calendar fa-lg"></i>
+            <p class=""><%= "#{@ticket.created_at.strftime("%d/%m/%Y à %H:%M")}" %></p>
+          </div>
+        <% else %>
+          <div class="d-flex justify-content-start align-items-center gap-3">
+            <i class="fa-regular fa-calendar fa-lg"></i>
+            <p class="m-0"><%= "#{@ticket.created_at.strftime("%d/%m/%Y à %H:%M")}" %></p>
+          </div>
+          <div class="d-flex justify-content-start align-items-center gap-3">
+            <i class="fa-regular fa-calendar-plus fa-lg"></i>
+            <p class="m-0"><%= "#{@ticket.updated_at.strftime("%d/%m/%Y à %H:%M")}" %></p>
+          </div>
+        <% end %>
+      </div>
     </div>
     <%# Actions %>
-    <div class="mt-3">
+    <div class="mt-1">
       <br>
       <h5 class="mb-3 ticket-show-h-font"><strong>Actions à mettre en place :</strong></h5>
       <% @ticket.actions.each do |action| %>
