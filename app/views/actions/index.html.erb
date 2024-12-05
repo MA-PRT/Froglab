@@ -20,11 +20,8 @@
           </svg>
         </div>
         <%# logo send %>
-
         <button type="submit" class="bg-dark font-navbar search-button d-flex align-items-center">
-          <svg class="ms-2" xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#F2F2F2">
-            <path d="M140-190v-580l688.46 290L140-190Zm60-90 474-200-474-200v147.69L416.92-480 200-427.69V-280Zm0 0v-400 400Z"/>
-          </svg>
+          <i class="fa-solid fa-paper-plane paper-plane-size" style="color: #f2f2f2;"></i>
         </button>
       <% end %>
     </div>
@@ -33,9 +30,10 @@
       <%# bouton refresh  %>
       <button class="bg-dark rounded-pill font-navbar refresh-button">
         <%= link_to actions_path, class: "d-flex align-items-center justify-content-center text-decoration-none" do %>
-          <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#F2F2F2">
+          <%# <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#F2F2F2">
             <path d="M515.38-349.23v-47.69h149.23v47.69H515.38ZM579.23-140v-53.85h-63.85v-47.69h63.85v-53.85h47.69V-140h-47.69Zm91.54-53.85v-47.69H820v47.69H670.77Zm37.69-101.54v-155.38h47.69v53.85H820v47.69h-63.85v53.84h-47.69Zm99.46-272.3h-62.23q-27.54-84.54-99.57-138.43Q574.08-760 480-760q-117 0-198.5 81.5T200-480q0 78.15 38.46 141.81 38.46 63.65 101.54 99.34V-360h60v220H180v-60h113.23q-69.3-45-111.27-118.27Q140-391.54 140-480q0-70.8 26.77-132.63t72.77-107.83q46-46 107.83-72.77Q409.2-820 480-820q118.61 0 208.81 71.42Q779-677.15 807.92-567.69Z"/>
-          </svg>
+          </svg> %>
+          <i class="fa-solid fa-rotate-right"></i>
         <% end %>
       </button>
     </div>
@@ -96,7 +94,7 @@
     <% end %>
   </div>
 
-<div class=" row fixed-bottom justify-content-center border-top text-bg-dark">
+<div class=" row fixed-bottom justify-content-center border-top text-bg-dark footer-bottom">
   <div class=" btn-align btn col-2">
     <%= link_to communications_path, class: "btn-link" do%>
       <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#F2F2F2"><path d="M716.92-460v-40h129.23v40H716.92Zm43.39 258.46-103.39-77.54 24.93-31.69 103.38 77.54-24.92 31.69Zm-81.54-450.77L653.85-684l103.38-77.54 24.92 31.69-103.38 77.54ZM220-241.54v-152.31h-41.54q-26.84 0-45.73-18.88-18.88-18.89-18.88-45.73v-43.08q0-26.84 18.88-45.73 18.89-18.88 45.73-18.88h149.23L486.15-660v360l-158.46-93.85H260v152.31h-40Zm226.15-129.69v-217.54l-107.23 62.62H178.46q-9.23 0-16.92 7.69-7.69 7.69-7.69 16.92v43.08q0 9.23 7.69 16.92 7.69 7.69 16.92 7.69h160.46l107.23 62.62Zm110.77 6.77v-231.08q20.08 18.62 32.35 48.89 12.27 30.27 12.27 66.65 0 36.38-12.27 66.65-12.27 30.27-32.35 48.89ZM300-480Z"/></svg>
